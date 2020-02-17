@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "sql">
+	
+	<select id = "selectDisposableTable" resultType ="java.lang.String">
+		SELECT * 
+		FROM disposable_table 
+	</select>
+	
+	<select id = "select_user_main" resultType="com.kh.middle.bean.user.user_main">
+		select 	*
+				from user_main
+	</select>
+	
+	<select id = "select_board_product" resultType="com.kh.middle.bean.board.product">
+		select 	board_code ,
+				board_category_count ,
+				board_img_url ,
+				board_title ,
+				board_content,
+				user_id
+				from board b
+				inner join user_main um using(user_code)
+	</select>
+	
+</mapper>
