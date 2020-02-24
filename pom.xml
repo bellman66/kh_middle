@@ -80,6 +80,13 @@
    			 <artifactId>mariadb-java-client</artifactId>
    			 <version>2.2.5</version>
 		</dependency>
+		
+		<!-- XML 파서 -->
+		<dependency>
+			<groupId> xpp3 </groupId>
+			<artifactId> xpp3 </artifactId>
+			<version> 1.1.4c</version>
+		</dependency>
 				
 		<!-- AspectJ -->
 		<dependency>

@@ -1,6 +1,6 @@
 package com.kh.middle.controller;
 
-import java.util.List;   
+import java.util.List;    
 import java.util.Locale; 
 
 import javax.annotation.Resource;
@@ -50,16 +50,6 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("Zombie_Cube_Escape.do")
-	public ModelAndView Zombie_Cube_Escapeview(ModelAndView mv) throws Exception {
-		
-		logger.info("Zombie_Cube_Escape.do 실행");
-		
-		mv.setViewName("Zombie_Cube_Escape");
-
-		return mv;
-	}
-
 	@RequestMapping("projects.do")
 	public String projects(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
