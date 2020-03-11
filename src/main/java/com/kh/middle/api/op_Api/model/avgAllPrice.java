@@ -19,7 +19,7 @@ public class avgAllPrice {
 	private BufferedInputStream bis = null;
 	
 	private static SetUrl seturl = new SetUrl();
-	 
+	
 	public avgAllPrice() throws Exception {
 		this.factory = XmlPullParserFactory.newInstance();
         this.factory.setNamespaceAware(true);

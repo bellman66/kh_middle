@@ -41,4 +41,19 @@ public class SetUrl {
 
 		return url;
 	}
+	
+	public String aroundAll(String out, double d , double e) {
+		// TODO Auto-generated method stub
+		String url = INIT_URL + "aroundAll.do?"
+							  + "&code=" + KEY 
+							  + "&x=" + d
+							  + "&y=" + e
+							  + "&radius=" + 1000
+							  + "&sort=" + 1
+							  + "&prodcd=" + "B027"
+							  + "&out=" + out;
+		System.out.println(url);
+
+		return url;
+	}
 }
