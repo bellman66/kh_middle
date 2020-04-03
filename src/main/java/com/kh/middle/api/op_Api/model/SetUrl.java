@@ -48,7 +48,7 @@ public class SetUrl {
 							  + "&code=" + KEY 
 							  + "&x=" + d
 							  + "&y=" + e
-							  + "&radius=" + 1000
+							  + "&radius=" + 2000
 							  + "&sort=" + 1
 							  + "&prodcd=" + "B027"
 							  + "&out=" + out;
