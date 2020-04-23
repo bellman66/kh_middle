@@ -23,7 +23,6 @@ public class MemberController{
 	public ModelAndView LoginPage(ModelAndView mav) {
 		System.out.println("loginHi");
 		mav.setViewName("/member/Login");
-	
 		return mav;
 	}
 
