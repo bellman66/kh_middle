@@ -7,14 +7,13 @@
 <head>
 	<title>Home</title>
 	<!-- ./resources/~ 선언식 -->
-	
+
 	<!-- 부트 스트랩 css 선언------------------------------ -->
 	<link rel="stylesheet" href="./resources/bootstrap/css/bootstrap.css" >
 	<link rel="stylesheet" href="./resources/bootstrap/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="./resources/bootstrap/css/pat_market.css" >
-	
 	<script src="./resources/bootstrap/js/bootstrap.min.js"></script>
-	
+
 	<!-- / css  ------------------------------ -->
 </head>
 <body id="bootstrap-overrides">
