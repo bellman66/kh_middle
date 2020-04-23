@@ -48,7 +48,7 @@ public class StellerController {
 	}
 	
 	@RequestMapping(value="avgAllPrice.do" , method=RequestMethod.POST)
-	@ResponseBody
+	@ResponseBody // 메소드의 실행결과를 JSON형태로 반환하는 역할을 하는 어노테이션
 	public Object avgAllPrice() {
 		
 		Gson gson = new Gson();
