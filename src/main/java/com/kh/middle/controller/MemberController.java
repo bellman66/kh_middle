@@ -18,7 +18,6 @@ public class MemberController{
 	
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);  
-
 	@RequestMapping("memberlogin.do")
 	public ModelAndView LoginPage(ModelAndView mav) {
 		System.out.println("loginHi");
