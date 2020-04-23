@@ -71,6 +71,7 @@ public class StellerController {
 	@ResponseBody	// POST 방식의 경우 response body를 통해 파라미터를 가져옴.
 	public Object aroundAll(@RequestBody Map<String,Double> paramData) {
 		
+		// json -> file 리턴.
 		Gson gson = new Gson();
 		String jsonstring = "";
 
