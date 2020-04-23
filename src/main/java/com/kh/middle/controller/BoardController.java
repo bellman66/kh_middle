@@ -22,6 +22,7 @@ import com.kh.middle.api.op_Api.Controller.Api_Controller;
 @RequestMapping("/board")
 public class BoardController extends HttpServlet {
 
+	
 	@CrossOrigin(origins = "*")
 	@RequestMapping("index.do")
 	public ModelAndView Board_indexView(ModelAndView mv, HttpServletRequest request, HttpServletResponse response)
