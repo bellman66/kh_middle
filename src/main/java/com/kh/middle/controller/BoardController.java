@@ -26,7 +26,7 @@ import com.kh.middle.notice.vo.PageDefault;
 @RequestMapping("/board")
 @Transactional(rollbackFor = { Exception.class })
 public class BoardController extends HttpServlet {
-
+ 
 	private static final Logger logger = LoggerFactory.getLogger(StellerController.class);
 
 	@Resource(name = "NoticeService")

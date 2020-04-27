@@ -10,7 +10,7 @@ public class Notice {
 	private Date notice_date;
 	private int notice_count;
 	private int notice_recommend;
-	private String notice_content;
+	private String notice_content; 
 
 	public Notice() {
 		super();

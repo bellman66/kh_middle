@@ -10,7 +10,7 @@ public class PageDefault {
 	public int getPageStart() {
 		return (this.pageNum -1) * this.amount;
 	}
-
+ 
 	public PageDefault() {
 		// 기본값 세팅
 		this(1, 5);

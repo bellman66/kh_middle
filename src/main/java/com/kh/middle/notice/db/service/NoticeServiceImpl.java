@@ -13,7 +13,7 @@ import com.kh.middle.notice.vo.Paging;
 
 @Service("NoticeService")
 public class NoticeServiceImpl implements NoticeService {
-
+ 
 	@Autowired
 	NoticeDao noticeDao;
 

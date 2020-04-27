@@ -7,7 +7,7 @@ import com.kh.middle.notice.vo.Notice;
 import com.kh.middle.notice.vo.PageDefault;
 import com.kh.middle.notice.vo.Paging;
 
-public interface NoticeService {
+public interface NoticeService { 
 	
 	public List<Notice> select_notice_paging(PageDefault pageDefault) throws Exception;
 	

@@ -10,7 +10,7 @@ public class Paging {
 	private Notice notice;
 
 	private PageDefault pageDefault;
-
+ 
 	// 매개변수로 객체와 총게시물수
 	public Paging(PageDefault pageDefault, int total) {
 		this.pageDefault = pageDefault;

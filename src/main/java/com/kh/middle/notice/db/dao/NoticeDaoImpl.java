@@ -13,7 +13,7 @@ import com.kh.middle.notice.vo.PageDefault;
 import com.kh.middle.notice.vo.Paging;
 
 @Repository("NoticeDao")
-public class NoticeDaoImpl implements NoticeDao {
+public class NoticeDaoImpl implements NoticeDao { 
 
 	@Autowired
 	SqlSessionTemplate sqlSession;

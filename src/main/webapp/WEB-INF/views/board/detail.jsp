@@ -9,7 +9,7 @@
 <link href="${pageContext.request.contextPath}/resources/steller/assets/css/map.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
-<body>
+<body> 
 	<div>
 		<div>
 			<h4 class="reset">제목 : ${detail.notice_title }</h4>

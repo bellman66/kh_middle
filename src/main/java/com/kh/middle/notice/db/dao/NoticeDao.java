@@ -5,7 +5,7 @@ import java.util.List;
 import com.kh.middle.notice.vo.Notice;
 import com.kh.middle.notice.vo.PageDefault;
 
-public interface NoticeDao {
+public interface NoticeDao { 
 	
 
 	public List<Notice> select_notice_paging(PageDefault pageDefault) throws Exception;
