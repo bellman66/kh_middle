@@ -1,20 +1,15 @@
 package com.kh.middle.controller;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
-import javax.management.MBeanAttributeInfo;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,10 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.middle.notice.db.service.NoticeService;
 import com.kh.middle.notice.vo.Notice;
+import com.kh.middle.notice.vo.Paging;
+import com.kh.middle.notice.vo.PageDefault;
 
 @Controller
 @RequestMapping("/board")
-@Transactional(rollbackFor = {Exception.class})
+@Transactional(rollbackFor = { Exception.class })
 public class BoardController extends HttpServlet {
 
 	private static final Logger logger = LoggerFactory.getLogger(StellerController.class);
@@ -35,12 +32,20 @@ public class BoardController extends HttpServlet {
 	@Resource(name = "NoticeService")
 	NoticeService noticeService;
 
-	@CrossOrigin(origins = "*")
+	/* @CrossOrigin(origins = "*") */
 	@RequestMapping("index.do")
 	public ModelAndView Board_indexView(ModelAndView mv, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		mv.addObject("noticeList", noticeService.select_notice_list());
+		PageDefault pageDefault = new PageDefault();
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		pageDefault.setPageNum(pageNum);
+
+		Paging paging = new Paging(pageDefault, noticeService.select_board_total_count());
+
+		mv.addObject("noticeList", noticeService.select_notice_paging(pageDefault));
+		mv.addObject("pageMaker", paging);
+
 		mv.setViewName("/board/index");
 
 		return mv;
@@ -67,7 +72,7 @@ public class BoardController extends HttpServlet {
 
 		noticeService.insert_notice(notice);
 
-		mv.setViewName("redirect:/board/index.do");
+		mv.setViewName("redirect:/board/index.do?pageNum=1");
 
 		return mv;
 	}
@@ -75,7 +80,14 @@ public class BoardController extends HttpServlet {
 	@RequestMapping("detail.do")
 	public ModelAndView Board_detail(ModelAndView mv, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		int num = Integer.parseInt(request.getParameter("noticeNum"));
+		Notice notice = new Notice();
+		int notice_num = Integer.parseInt(request.getParameter("noticeNum"));
+
+		noticeService.update_notice_count(notice_num);
+		notice = noticeService.select_notice_detail(notice_num);
+
+		mv.addObject("detail", notice);
+		mv.setViewName("/board/detail");
 
 		return mv;
 	}
@@ -88,7 +100,12 @@ public class BoardController extends HttpServlet {
 //		String pritnStackTrace() : 발생된 예외를 역추적하기 위해 표준 예외 스트림을 출력한다. 
 //		예외 발생시 예외가 발생한 곳을 알아낼 때 주로 사용된다. 
 
-		return null;
+		String error = e.getMessage();
 
+		ModelAndView model = new ModelAndView();
+		logger.info(error);
+		model.addObject("error", error);
+
+		return model;
 	}
 }
