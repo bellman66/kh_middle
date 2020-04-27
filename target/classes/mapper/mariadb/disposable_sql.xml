@@ -25,4 +25,17 @@
 				inner join user_main um using(user_code)
 	</select>
 	
+	<select id="select_notice_list" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi
+	</select>
+	
+	<insert id="insert_notice" parameterType="com.kh.middle.notice.vo.Notice">
+		insert into notice_semi values(null, #{notice_title}, 'g', sysdate(), 0, 0, #{notice_content})
+	</insert>
+	
+	<select id="select_notice_detail" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi where notice_num = #{notice_num}
+	</select>
+	
+	
 </mapper>

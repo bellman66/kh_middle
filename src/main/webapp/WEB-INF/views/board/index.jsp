@@ -12,8 +12,6 @@
 
 <title>게시판</title>
 
-
-
 </head>
 
 <body>
@@ -22,55 +20,40 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">게시판</h1>
+					<%-- <h1>${noticeList }</h1> --%>
 				</div>
 				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-striped table-bordered table-hover"
-									id="dataTables-example">
-									<thead>
-										<tr>
-											<th>글번호</th>
-											<th>제목</th>
-											<th>글쓴이</th>
-											<th>작성일</th>
-											<th>조회</th>
-											<th>추천</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="odd gradeX">
-											<td>001</td>
-											<td>안녕안녕</td>
-											<td>김지수</td>
-											<td>2020-04-21</td>
-											<td>1200</td>
-											<td>100</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!-- /.table-responsive -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover"
+						id="dataTables-example">
+						<thead>
+							<tr>
+								<th>글번호</th>
+								<th>제목</th>
+								<th>글쓴이</th>
+								<th>작성일</th>
+								<th>조회</th>
+								<th>추천</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${noticeList}" var="notice">
+								<tr>
+									<td>${notice.notice_num }</td>
+									<td><a href="<%= request.getContextPath()%>/board/detail.do?noticeNum=${notice.notice_num}">${notice.notice_title }</a></td>
+									<td>${notice.notice_id }</td>
+									<td>${notice.notice_date }</td>
+									<td>${notice.notice_count }</td>
+									<td>${notice.notice_recommend }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
-				<!-- /.col-lg-12 -->
+				<a href="<%=request.getContextPath()%>/board/write.do"><button>게시물작성</button></a>
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /#page-wrapper -->
-
 	</div>
-	<!-- /#wrapper -->
-
 
 </body>
 
