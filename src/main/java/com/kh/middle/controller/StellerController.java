@@ -27,7 +27,7 @@ import com.kh.middle.api.op_Api.Controller.Api_Controller;
 
 @Controller
 @RequestMapping("/steller")
-@Transactional(rollbackFor = {Exception.class})
+@Transactional(rollbackFor = {Exception.class})	// exception -> rollback
 public class StellerController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StellerController.class);

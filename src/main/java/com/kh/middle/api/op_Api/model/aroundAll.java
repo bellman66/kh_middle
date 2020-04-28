@@ -12,7 +12,6 @@ import com.kh.middle.bean.api.opNet.avgSigunPrice_obj;
 
 public class aroundAll {
 
-	
 	private URL url = null;
 	private XmlPullParserFactory factory = null;
 	private XmlPullParser xpp = null;
@@ -29,6 +28,7 @@ public class aroundAll {
 	public static void main(String[] args) throws Exception {
 		aroundAll al = new aroundAll();
 		al.getaroundAll(315179.00000 , 544445.00000);
+		System.out.println("내프로젝트의 루트경로는?  " + System.getProperty("user.dir"));
 	}
 	
 	// url입력시 세팅 메소드.
