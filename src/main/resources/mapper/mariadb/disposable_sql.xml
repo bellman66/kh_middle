@@ -63,7 +63,7 @@
 	<select id = "select_review" 
 	parameterType="String"
 	resultType="com.kh.middle.review.vo.Review">
-		SELECT * FROM review_semi WHERE  uni_id = #{uni_id} ORDER BY review_no DESC
+		SELECT * FROM (SELECT * FROM review_semi WHERE  uni_id = #{uni_id} ORDER BY review_no DESC) limit 3;
 	</select>
 	
 	

@@ -46,18 +46,10 @@ public class ReviewController {
 		// 화면에 보여줄 기존 리뷰들
 		System.out.println("uni : " + uni_id);
 		jsonstring = gson.toJson(db_Service.select_review(uni_id));
-		
+		System.out.println(jsonstring);
 		return jsonstring;
 	}
 
-	// 리뷰 생성 후 작성 된 리뷰들 보여주기
-	@RequestMapping(value = "/reviews", method = RequestMethod.POST)
-	public String create(@ModelAttribute Review review) throws Exception {
-
-		db_Service.insert_review(review);
-		return "redirect:/os/show/" + review.getUni_id();
-
-	}
 
 	@ExceptionHandler(value = Exception.class)
 	public ModelAndView handleException(Exception e) {
