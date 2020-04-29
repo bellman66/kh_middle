@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.middle.DataBase.Service.DB_Service;
 import com.kh.middle.review.vo.Review;
 
@@ -31,69 +33,21 @@ public class ReviewController {
 	@Resource(name="DB_Service")
 	private DB_Service db_Service;
 
-	@RequestMapping("index.do")
-	public ModelAndView Steller_indexview(ModelAndView mv, HttpServletRequest request, HttpServletResponse response
-			,@RequestParam(value = "uni_id") String uni_id)
+	@RequestMapping(value = "index.do",
+			method= {RequestMethod.GET, RequestMethod.POST}, 
+			produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public Object review_show(@RequestParam(value = "uni_id") String uni_id)
 			throws Exception {
 
+		Gson gson = new Gson();
+		String jsonstring = "";
+		
 		// 화면에 보여줄 기존 리뷰들
 		System.out.println("uni : " + uni_id);
-		List<Review> reviews = db_Service.select_review(uni_id);
-		mv.setViewName("/steller/index");
-		if (reviews.size() != 0) {
-			
-			for (Review review : reviews) {
-				System.out.println(review.toString());
-			}
-			mv.addObject("reviews", reviews);
-		} else {
-			System.out.println("현재 작성된 리뷰가 없어용");
-		}
-		// 평점 옵션
-		Map ratingOptions = new HashMap();
-		ratingOptions.put(0, "☆☆☆☆☆");
-		ratingOptions.put(1, "★☆☆☆☆");
-		ratingOptions.put(2, "★★☆☆☆");
-		ratingOptions.put(3, "★★★☆☆");
-		ratingOptions.put(4, "★★★★☆");
-		ratingOptions.put(5, "★★★★★");
-		mv.addObject("ratingOptions", ratingOptions);
-
-		return mv;
-	}
-
-	@RequestMapping(value = "id.do")
-	public String show(@RequestParam(value = "uni_id") String uni_id, Model model) throws Exception {
-
-		// 주유소 id 받아오기
-		// Os os = osMapper.getOs(id);
-		// model.addAttribute("os", os);
-
-		// 화면에 보여줄 기존 리뷰들
-		List<Review> reviews = db_Service.select_review(uni_id);
-
-		if (reviews.size() != 0) {
-
-			System.out.println("있다?");
-			model.addAttribute("reviews", reviews);
-
-		} else {
-
-			System.out.println("없다?");
-
-		}
-
-		// 평점 옵션
-		Map ratingOptions = new HashMap();
-		ratingOptions.put(0, "☆☆☆☆☆");
-		ratingOptions.put(1, "★☆☆☆☆");
-		ratingOptions.put(2, "★★☆☆☆");
-		ratingOptions.put(3, "★★★☆☆");
-		ratingOptions.put(4, "★★★★☆");
-		ratingOptions.put(5, "★★★★★");
-		model.addAttribute("ratingOptions", ratingOptions);
-
-		return "/steller/index";
+		jsonstring = gson.toJson(db_Service.select_review(uni_id));
+		
+		return jsonstring;
 	}
 
 	// 리뷰 생성 후 작성 된 리뷰들 보여주기
