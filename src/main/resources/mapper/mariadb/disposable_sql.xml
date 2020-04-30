@@ -25,4 +25,51 @@
 				inner join user_main um using(user_code)
 	</select>
 	
+	<select id="select_notice_list" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi
+	</select>
+	
+	<insert id="insert_notice" parameterType="com.kh.middle.notice.vo.Notice">
+		insert into notice_semi values(null, #{notice_title}, 'g', sysdate(), 0, 0, #{notice_content})
+	</insert>
+	
+	<select id="select_notice_detail" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi where notice_num = #{notice_num}
+	</select>
+	
+	<update id="update_notice_count" parameterType="int">
+		update notice_semi set notice_count = notice_count + 1 where notice_num = #{notice_num}
+	</update>
+	
+	<select id="select_notice_paging" parameterType="com.kh.middle.notice.vo.PageDefault" resultType="com.kh.middle.notice.vo.Notice">
+		<![CDATA[
+			select notice_num, notice_title, notice_id, notice_date, notice_count, notice_recommend 
+			from notice_semi
+			order by notice_num desc
+			limit #{pageStart} , #{amount}
+		]]> 
+	</select>
+	
+	<select id="select_board_total_count" resultType="int">
+		select count(*) from notice_semi
+	</select>
+	
+	<!-- 리뷰  -->
+	<insert id="insert_review" parameterType="com.kh.middle.review.vo.Review">
+		INSERT INTO review_semi VALUES ( null, #{content}, #{uni_id}, #{rating}, #{user_id})
+	</insert>
+	
+	<!--  -->
+	<select id = "select_review" 
+	parameterType="String"
+	resultType="com.kh.middle.review.vo.Review">
+		SELECT * FROM (SELECT * FROM review_semi WHERE  uni_id = #{uni_id} ORDER BY review_no DESC) limit 3;
+	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
