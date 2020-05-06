@@ -7,41 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.middle.notice.db.dao.NoticeDao;
-<<<<<<< HEAD
-import com.kh.middle.notice.vo.Notice;
-import com.kh.middle.notice.vo.PageDefault;
-import com.kh.middle.notice.vo.Paging;
-
-@Service("NoticeService")
-public class NoticeServiceImpl implements NoticeService {
- 
-	@Autowired
-	NoticeDao noticeDao;
-
-	@Override
-	public List<Notice> select_notice_paging(PageDefault pageDefault) throws Exception {
-		return noticeDao.select_notice_paging(pageDefault);
-	}
-	
-	@Override
-	public void insert_notice(Notice notice) throws Exception {
-		noticeDao.insert_notice(notice);
-	}
-
-	@Override
-	public Notice select_notice_detail(int notice_num) throws Exception {
-		return noticeDao.select_notice_detail(notice_num);
-	}
-
-	@Override
-	public void update_notice_count(int notice_num) throws Exception {
-		noticeDao.update_notice_count(notice_num);
-	}
-
-	@Override
-	public int select_board_total_count() throws Exception {
-		return noticeDao.select_board_total_count();
-=======
 import com.kh.middle.notice.vo.Comment;
 import com.kh.middle.notice.vo.Notice;
 import com.kh.middle.notice.vo.PageDefault;
@@ -122,7 +87,6 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int select_notice_comment_cnt(int notice_num) throws Exception {
 		return noticeDao.select_notice_comment_cnt(notice_num);
->>>>>>> branch 'master' of https://github.com/rndso15/kh_middle.git
 	}
 
 }

@@ -24,34 +24,8 @@
 	
 	</select>
 
-	<select id="select_notice_list" resultType="com.kh.middle.notice.vo.Notice">
-		select * from notice_semi
-	</select>
 	
-	<insert id="insert_notice" parameterType="com.kh.middle.notice.vo.Notice">
-		insert into notice_semi values(null, #{notice_title}, 'g', sysdate(), 0, 0, #{notice_content})
-	</insert>
-	
-	<select id="select_notice_detail" resultType="com.kh.middle.notice.vo.Notice">
-		select * from notice_semi where notice_num = #{notice_num}
-	</select>
-	
-	<update id="update_notice_count" parameterType="int">
-		update notice_semi set notice_count = notice_count + 1 where notice_num = #{notice_num}
-	</update>
-	
-	<select id="select_notice_paging" parameterType="com.kh.middle.notice.vo.PageDefault" resultType="com.kh.middle.notice.vo.Notice">
-		<![CDATA[
-			select notice_num, notice_title, notice_id, notice_date, notice_count, notice_recommend 
-			from notice_semi
-			order by notice_num desc
-			limit #{pageStart} , #{amount}
-		]]> 
-	</select>
-	
-	<select id="select_board_total_count" resultType="int">
-		select count(*) from notice_semi
-	</select>
+
 	
 	<!-- 리뷰  -->
 	<insert id="insert_review" parameterType="com.kh.middle.review.vo.Review">
@@ -93,5 +67,84 @@
 		values(#{user_id},#{user_pw},#{kind_oil},#{email},#{user_tell},#{nick_name})	
 	
 	</insert>
+	
+	<select id="select_notice_list" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi
+	</select>
+	
+	<insert id="insert_notice" parameterType="com.kh.middle.notice.vo.Notice">
+		insert into notice_semi values(null, #{notice_title}, '김지수', sysdate(), 0, 0, #{notice_content}
+		, #{original_filepath}, #{rename_filepath})
+	</insert>
+	
+	<select id="select_notice_detail" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi where notice_num = #{notice_num}
+	</select>
+	
+	<update id="update_notice_count" parameterType="int">
+		update notice_semi set notice_count = notice_count + 1 where notice_num = #{notice_num}
+	</update>
+	
+	<select id="select_notice_paging" parameterType="com.kh.middle.notice.vo.PageDefault" resultType="com.kh.middle.notice.vo.Notice">
+		<![CDATA[
+			select notice_num, notice_title, notice_id, notice_date, notice_count, notice_recommend 
+			from notice_semi
+			order by notice_num desc
+			limit #{pageStart} , #{amount}
+		]]> 
+	</select>
+	
+	<select id="select_board_total_count" resultType="int">
+		select count(*) from notice_semi
+	</select>
+	
+	<update id="update_modify_notice" parameterType="com.kh.middle.notice.vo.Notice">
+		update notice_semi set notice_title = #{notice_title}, notice_content = #{notice_content},
+		original_filepath = #{original_filepath}, rename_filepath = #{rename_filepath}
+		where notice_num = #{notice_num}
+	</update>
+	
+	<update id="update_recommend" parameterType="com.kh.middle.notice.vo.Notice">
+		update notice_semi set notice_count = #{notice_count} + 1
+		where notice_num = #{notice_num}
+	</update>
+	
+	<insert id="insert_notice_comment" parameterType="com.kh.middle.notice.vo.Comment">
+		insert into notice_comment_semi values(#{notice_num},#{comment_content}, null, #{comment_id})
+	</insert>
+	
+	<select id="select_notice_comment" parameterType="int" resultType="com.kh.middle.notice.vo.Comment">
+		select * from notice_comment_semi where notice_num = #{notice_num}
+	</select>
+	
+	<!-- 글+댓삭 -->
+	<delete id="delete_notice" parameterType="int">
+		delete from notice_semi
+		where notice_num = #{notice_num}
+	</delete>
+	
+	<!-- 댓삭 -->
+	<delete id="delete_notice_comment" parameterType="int">
+		delete from notice_comment_semi where comment_num = #{comment_num}
+	</delete>
+	
+	<update id="update_notice_recommend" parameterType="int">
+		update notice_semi set notice_recommend = notice_recommend + 1 
+		where notice_num = #{notice_num}
+	</update>
+
+	<!-- 댓 수정 -->	
+	<update id="update_notice_comment_modify" parameterType="com.kh.middle.notice.vo.Comment">
+		update notice_comment_semi
+		set comment_content = #{comment_content}
+		where comment_num = #{comment_num}
+	</update>
+
+	<!-- 미사용 -->	
+	<select id="select_notice_comment_cnt" parameterType="int" resultType="int">
+		select count(*) from notice_comment_semi as aa
+		inner join notice_semi as bb
+		on aa.notice_num = bb.notice_num
+	</select>
 	
 </mapper>

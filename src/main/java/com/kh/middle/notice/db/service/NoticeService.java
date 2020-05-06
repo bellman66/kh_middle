@@ -3,23 +3,6 @@ package com.kh.middle.notice.db.service;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
-import com.kh.middle.notice.vo.Notice;
-import com.kh.middle.notice.vo.PageDefault;
-import com.kh.middle.notice.vo.Paging;
-
-public interface NoticeService { 
-	
-	public List<Notice> select_notice_paging(PageDefault pageDefault) throws Exception;
-	
-	public int select_board_total_count() throws Exception;
-
-	public void insert_notice(Notice notice) throws Exception;
-	
-	public Notice select_notice_detail(int notice_num) throws Exception;
-	
-	public void update_notice_count(int notice_num) throws Exception;
-=======
 import org.apache.http.auth.NTCredentials;
 
 import com.kh.middle.notice.vo.Comment;
@@ -57,5 +40,4 @@ public interface NoticeService {
 	
 	public int select_notice_comment_cnt(int notice_num) throws Exception;
 	
->>>>>>> branch 'master' of https://github.com/rndso15/kh_middle.git
 }

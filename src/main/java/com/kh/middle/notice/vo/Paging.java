@@ -5,36 +5,7 @@ public class Paging {
 	private int startPage;
 	private int endPage;
 	private boolean prev, next;
-<<<<<<< HEAD
-
-	private int total;
-	private Notice notice;
-
-	private PageDefault pageDefault;
- 
-	// 매개변수로 객체와 총게시물수
-	public Paging(PageDefault pageDefault, int total) {
-		this.pageDefault = pageDefault;
-		this.total = total;
-
-		// 게시물 페이지 번호 /10.0 올림처리후 *10
-		this.endPage = (int) Math.ceil(pageDefault.getPageNum() / 10.0) * 10;
-		// 끝페이지 - (보여줄 페이지 갯수 - 1)
-		this.startPage = this.endPage - 9;
-		// 진짜 끝 페이지
-		int realEnd = (int) (Math.ceil(total * 1.0) / pageDefault.getAmount());
-		if (realEnd <= this.endPage) {
-			this.endPage = realEnd;
-		}
-
-		this.prev = this.startPage > 1;
-
-		this.next = this.endPage < realEnd;
-
-	}
-=======
 	private int allPageCnt;
-
 	private int total;
 	private Notice notice;
 
@@ -73,9 +44,6 @@ public class Paging {
 	public void setAllPageCnt(int allPageCnt) {
 		this.allPageCnt = allPageCnt;
 	}
-
-
->>>>>>> branch 'master' of https://github.com/rndso15/kh_middle.git
 
 	public int getStartPage() {
 		return startPage;
