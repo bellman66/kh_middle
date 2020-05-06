@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Login Page</title>
 </head>
-<body>
+<body>   
 	<form action="<%=request.getContextPath() %>/member/memberlogin.do" method="post">
 		<div>
 			id : <input type="text" name="userId" id="userId"/><br>

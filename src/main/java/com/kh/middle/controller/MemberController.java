@@ -42,7 +42,7 @@ public class MemberController {
 	
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	@Resource(name = "MemberService")
+	@Resource(name = "MemberService")   
 	private MemberService memberService;
 	/**
 	 * 1.MethodName : LoginPage 2.ClassName : MemberController.java 3.Comment :
@@ -175,7 +175,7 @@ public class MemberController {
 		}else {
 			pw.write("false");
 		}
-	}
+	}  
 	
 	/**
 		1.MethodName : idCheck

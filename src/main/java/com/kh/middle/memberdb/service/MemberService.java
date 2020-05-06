@@ -10,7 +10,7 @@ import com.kh.middle.memberdb.dao.MemberDao;
 public class MemberService implements MemberServiceInter{
 	@Autowired
 	private MemberDao memberDao;
-	
+	   
 	@Override
 	public Member memberLogin(Member m) throws Exception {
 		
@@ -28,7 +28,7 @@ public class MemberService implements MemberServiceInter{
 	}
 	@Override
 	public Member kakao_id_check(Member m) throws Exception {
-		
+		  
 		
 		return memberDao.kakao_id_check(m);
 	}

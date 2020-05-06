@@ -2,7 +2,7 @@ package com.kh.middle.memberdb.dao;
 
 import com.kh.middle.bean.member.Member;
 
-public interface MemberDaoInter {
+public interface MemberDaoInter {   
 
 	public Member memberLogin(Member m) throws Exception;
 	public String idCheck(String id) throws Exception;

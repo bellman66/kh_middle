@@ -9,7 +9,7 @@ import com.kh.middle.bean.member.Member;
 @Repository("MemberDao")
 public class MemberDao implements MemberDaoInter{
 
-	@Autowired
+	@Autowired  
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
