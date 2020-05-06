@@ -3,26 +3,55 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "sql">
+	<!-- sql 작성 하는곳  -->
 	
-	<select id = "selectDisposableTable" resultType ="java.lang.String">
-		SELECT * 
-		FROM disposable_table 
+	<!-- select -->
+	<select id = "login_member" resultType="com.kh.middle.bean.member.Member">
+	
+		select * from member_semi where user_id = #{user_id} and user_pw = #{user_pw} and leave_yn = 'N'
+	
 	</select>
 	
-	<select id = "select_user_main" resultType="com.kh.middle.bean.user.user_main">
-		select 	*
-				from user_main
+	<select id="join_id_check" resultType="java.lang.String">
+		
+		select * from member_semi where user_id = #{user_id}
+	
 	</select>
 	
-	<select id = "select_board_product" resultType="com.kh.middle.bean.board.product">
-		select 	board_code ,
-				board_category_count ,
-				board_img_url ,
-				board_title ,
-				board_content,
-				user_id
-				from board b
-				inner join user_main um using(user_code)
+	<select id="nick_name_select" parameterType="String" resultType="java.lang.String">
+	
+		select nick_name from member_semi where nick_name = #{nick_name}
+	
 	</select>
+	
+	
+	<select id="kakao_id_check" resultType="com.kh.middle.bean.member.Member">
+	
+		select * from member_semi where user_id = #{user_id}
+		
+	</select>
+	
+	
+	<select id="login" resultType="com.kh.middle.bean.member.Member">
+	 
+		select user_id, nick_name,m_code,kind_oil from member_semi where user_id = #{user_id}
+	
+	</select>
+	
+	<!-- insert -->
+	
+	<insert id="kakao_join" parameterType="com.kh.middle.bean.member.Member" useGeneratedKeys="true" keyProperty="user_id">
+	
+		insert into member_semi(user_id,kind_oil,nick_name,m_code)
+		values(#{user_id},#{kind_oil},#{nick_name},1)	
+	</insert>
+	
+	<insert id="join_imple" useGeneratedKeys="true" keyProperty="user_id">
+
+		insert into member_semi(user_id,user_pw,kind_oil,email,user_tell,nick_name)
+		values(#{user_id},#{user_pw},#{kind_oil},#{email},#{user_tell},#{nick_name})	
+	
+	</insert>
+	
 	
 </mapper>
