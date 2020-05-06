@@ -15,7 +15,7 @@ public class MemberService implements MemberServiceInter{
 	public Member memberLogin(Member m) throws Exception {
 		
 		return memberDao.memberLogin(m);
-	}
+	} 
 	@Override
 	public String idCheck(String id) throws Exception {
 		return memberDao.idCheck(id);

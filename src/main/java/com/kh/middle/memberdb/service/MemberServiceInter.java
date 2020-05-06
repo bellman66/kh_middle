@@ -11,6 +11,6 @@ public interface MemberServiceInter {
 	public void kakaoJoin(Member m) throws Exception;
 	Object selectNickname(String nickname)throws Exception;
 	
-	
+	 
 
 }

@@ -15,7 +15,7 @@ public class MemberDao implements MemberDaoInter{
 	@Override
 	public Member memberLogin(Member m) throws Exception {
 		
-		return sqlSession.selectOne("login_member",m);
+		return sqlSession.selectOne("login_member",m); 
 	}
 	@Override
 	public String idCheck(String id) throws Exception {

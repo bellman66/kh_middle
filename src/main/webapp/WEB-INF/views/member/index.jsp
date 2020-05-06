@@ -12,7 +12,7 @@
 	<c:if test="${sessionScope.userData ne null }">
 		환영합니다 <c:out value="${sessionScope.userData.nick_name }"/>님 
 		<form action="<%=request.getContextPath()%>/member/logout.do">
-			<button type="submit" class="login_form">로그아웃</button>		
+			<button type="submit" class="login_form">로그아웃</button>		 
 		</form>
 		
 		<form action="<%=request.getContextPath()%>/member/mypage.do">

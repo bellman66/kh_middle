@@ -240,7 +240,7 @@ public class MemberController {
 		NaverCaptchaNkey naverCaptchar = new NaverCaptchaNkey();
 		String captcharKey = "";
 		String getImg = "";
-		captcharKey = naverCaptchar.returnKey(0,null,null,request);
+		captcharKey = naverCaptchar.returnKey(0,null,null,request); 
 			
 		JsonParser jsonParser = new JsonParser();
 		JsonElement jsonElement = jsonParser.parse(captcharKey);

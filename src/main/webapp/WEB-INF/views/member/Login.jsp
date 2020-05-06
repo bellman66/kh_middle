@@ -12,7 +12,7 @@
 	<form action="<%=request.getContextPath() %>/member/memberlogin.do" method="post">
 		<div>
 			id : <input type="text" name="userId" id="userId"/><br>
-			pw : <input type="password" name="userPass" id="userPass"/>
+			pw : <input type="password" name="userPass" id="userPass"/> 
 		</div>
 		<button type="submit">로그인</button>
 	</form>
