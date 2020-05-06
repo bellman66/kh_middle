@@ -2,7 +2,11 @@ package com.kh.middle.notice.vo;
 
 public class PageDefault {
 
+<<<<<<< HEAD
 	// 페이지 번호
+=======
+	// 게시물의 번호
+>>>>>>> branch 'master' of https://github.com/rndso15/kh_middle.git
 	private int pageNum;
 	// 한 페이지에 표현될 게시물 수
 	private int amount;
