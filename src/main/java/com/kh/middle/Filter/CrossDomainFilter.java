@@ -22,8 +22,6 @@ public class CrossDomainFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse servletResponse,
 			FilterChain chain) throws IOException, ServletException {
-		
-		System.out.println("===== before(filter) =====");
 	
 //		if (!(request instanceof HttpServletRequest)) {
 //			throw new ServletException("This filter can "
@@ -37,12 +35,10 @@ public class CrossDomainFilter implements Filter {
 		response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 		chain.doFilter(request, response);
 		
-		System.out.println("===== after(filter) =====");
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		System.out.println("===== init filter =====");
 	}
 	
 }

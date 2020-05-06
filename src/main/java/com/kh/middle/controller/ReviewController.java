@@ -44,10 +44,27 @@ public class ReviewController {
 		String jsonstring = "";
 		
 		// 화면에 보여줄 기존 리뷰들
-		System.out.println("uni : " + uni_id);
 		jsonstring = gson.toJson(db_Service.select_review(uni_id));
-		System.out.println(jsonstring);
 		return jsonstring;
+	}
+
+	@RequestMapping(value = "review_insert.do",
+			method= {RequestMethod.GET, RequestMethod.POST}, 
+			produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public int review_insert(
+							@RequestParam(value = "content") String content ,
+							@RequestParam(value = "uni_id") String uni_id ,
+							@RequestParam(value = "rating") int rating
+							)
+			throws Exception {
+
+		int result = -1;
+		
+		Review review = new Review(uni_id, "test_user" , rating, content);
+		db_Service.insert_review(review);
+		
+		return result;
 	}
 
 

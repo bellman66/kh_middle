@@ -54,6 +54,17 @@
 		select count(*) from notice_semi
 	</select>
 	
+	<!-- 리뷰  -->
+	<insert id="insert_review" parameterType="com.kh.middle.review.vo.Review">
+		INSERT INTO review_semi VALUES ( null, #{uni_id}, #{user_id}, #{rating}, #{content})
+		
+	</insert>
 	
+	<!--  -->
+	<select id = "select_review" 
+	parameterType="String"
+	resultType="com.kh.middle.review.vo.Review">
+		SELECT * FROM review_semi WHERE  uni_id = #{uni_id} ORDER BY review_no DESC limit 3;
+	</select>
 	
 </mapper>

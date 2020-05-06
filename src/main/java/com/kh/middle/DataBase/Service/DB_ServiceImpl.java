@@ -59,17 +59,4 @@ public class DB_ServiceImpl implements DB_Service{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
