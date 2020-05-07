@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/board/detail.css"
 	rel="stylesheet" />
 </head> 
-	 
+	  
 	<body class="is-preload">
 
 		<!-- Wrapper -->

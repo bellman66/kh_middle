@@ -13,7 +13,7 @@
 	 	  display: inline-block;
 		  transform:translateX(29%);
 		}
-		
+ 		
 		.pagination a {
 		  color: black;
 		  float: left;
