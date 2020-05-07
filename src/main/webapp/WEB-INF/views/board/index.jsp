@@ -3,27 +3,60 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<style>
+	<head>
+		<title>게시판</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
+		<style>
+		.pagination {
+		  display: inline-block;
+		  transform:translateX(29%);
+		}
+		
+		.pagination a {
+		  color: black;
+		  float: left;
+		  padding: 8px 16px;
+		  text-decoration: none;
+		}
+		
+		.pagination a.active {
+		  background-color: #4CAF50;
+		  color: white;
+		}
+		</style>
+	</head>
 	
-</style>
-<head>
-<%@ include file="header.jsp"%>
-<link href="${pageContext.request.contextPath}/resources/css/board/index.css"
-	rel="stylesheet" />
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<body class="is-preload">
 
-</head>
-<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<body>
-	<div class="wrapper">
-		<%-- <h1>${noticeList }</h1> --%>
-			<div id="write">
-			<h1 id="h1"><a href="<%=request.getContextPath()%>/board/index.do?pageNum=1">게시판</a></h1>
-			<a href="<%=request.getContextPath()%>/board/write.do"><button>게시물작성</button></a>
-			
-			<table>
+			<!-- Header -->
+			<header id="header">
+			</header>
+					
+			<nav id="nav">
+				<ul>
+					<li><a href="#intro" class="active">Introduction</a></li>
+					<li><a href="#first">First Section</a></li>
+					<li><a href="#second">Second Section</a></li>
+					<li><a href="#cta">Get Started</a></li>
+				</ul>
+			</nav>
+
+				<!-- Main -->
+				<div id="main">
+				<section id="content" class="main">
+				<div>
+				<h1 style="float:left;">게시판</h1>
+				<a style="float:right" href="<%=request.getContextPath()%>/board/write.do">
+					<button onclick="if(${sessionScope.userData == null}){alert('로그인하세요');return false;}">게시물작성</button>
+				</a>
+				</div>
+				<br><br>
+				<table>
 				<thead>
 					<tr>
 						<th class="no">글번호</th>
@@ -50,68 +83,54 @@
 				</tbody>
 			</table>
 	
-			<!-- ======== Paging ========= -->
-			<div class="paging">
-			
-					<!-- 이전 장 (10번째 이전 페이지)-->
-					<span class="paginate_button previous">
-					<c:if test="${pageMaker.prev}">
-					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.startPage -1 }">
-						Prev </a>
-					</c:if>
-					<c:if test="${!pageMaker.prev}">
-					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.startPage }">
-						Prev </a>
-					</c:if>
-					</span>
-					
-					<!-- 이전 페이지 -->
-					<c:if test="${pageNum gt 1 }">
-					<span class="paginate_button prev">
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum-1}"><c:out value="<"/></a>
-					</span>
-					</c:if>		
-					<c:if test="${pageNum eq 1 }">
-					<span class="paginate_button prev">
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum }"><c:out value="<"/></a>
-					</span>
-					</c:if>
-					
-					<!-- 현재 페이지(숫자) -->		
-					<c:forEach var="num" begin="${pageMaker.startPage }"
-						end="${pageMaker.endPage }">
-					<span class='paginate_button'>
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${num }">${num }</a>
-					</span>
-					</c:forEach>
-					
-					<!-- 다음페이지 -->
-					<c:if test="${pageNum lt pageMaker.allPageCnt }">
-					<span class="paginate_button next">
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum+1 }"><c:out value=">"/></a>
-					</span>
-					</c:if>
-					<c:if test="${pageNum eq pageMaker.allPageCnt}">
-					<span class="paginate_button next">
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum }"><c:out value=">"/></a>
-					</span>
-					</c:if>
-	
-					<!-- 다음 장(10번째 이후 페이지) -->
-					<span class="paginate_button next">
-					<c:if test="${ pageMaker.next}">
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.endPage + 1 }">
-							Next </a>
-					</c:if>
-					<c:if test="${ !pageMaker.next}">
-						<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.endPage }">
-							Next </a>
-					</c:if>
-					</span>
+			<!-- ==============여기서부터 페이징================== -->
+			<div class="pagination">
+				<!-- 이전 장 (10번째 이전 페이지)-->
+				<c:if test="${pageMaker.prev}">
+				<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.startPage -1 }">
+					&laquo; </a>
+				</c:if>
+				<c:if test="${!pageMaker.prev}">
+				<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.startPage }">
+					&laquo; </a>
+				</c:if>
+			<!-- ============================================= -->
+			  <!-- 이전 페이지 -->
+				<c:if test="${pageNum gt 1 }">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum-1}">&lt;</a>
+				</c:if>		
+				<c:if test="${pageNum eq 1 }">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum }">&lt;</a>
+				</c:if>
+			<!-- ============================================= -->
+				 <!-- 현재 페이지(숫자) -->		
+				<c:forEach var="num" begin="${pageMaker.startPage }"
+					end="${pageMaker.endPage }">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${num }">${num }</a>
+				</c:forEach>
+			<!-- ============================================= -->
+				  <!-- 다음페이지 -->
+				<c:if test="${pageNum lt pageMaker.allPageCnt }">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum+1 }">&gt;</a>
+				</c:if>
+				<c:if test="${pageNum eq pageMaker.allPageCnt}">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageNum }">&gt;</a>
+				</c:if>
+			<!-- ============================================= -->
+			 	 <!-- 다음 장(10번째 이후 페이지) -->
+				<c:if test="${ pageMaker.next}">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.endPage + 1 }">
+						&raquo; </a>
+				</c:if>
+				<c:if test="${ !pageMaker.next}">
+					<a href="<%= request.getContextPath()%>/board/index.do?pageNum=${pageMaker.endPage }">
+						&raquo; </a>
+				</c:if>
 			</div>
-		</div>
-	</div>
-	
-</body>
+			<!-- ============================================= -->
 
+		</div>
+		</section>
+
+	</body>
 </html>

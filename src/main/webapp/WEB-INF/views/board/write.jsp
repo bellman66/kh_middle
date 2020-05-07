@@ -6,28 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="header.jsp"%>
-<link href="${pageContext.request.contextPath}/resources/css/board/write.css"
-	rel="stylesheet" />
-</head>
-<body>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
+	<body class="is-preload">
 
-	<form action="<%=request.getContextPath()%>/board/upload.do"
-		method="post" enctype="multipart/form-data">
-		<div class="wrapper">
-			<h1 id="h1">게시물 작성</h1>
-			<div id="write">
-				<div id="write">
-					<input id="title" type="text" placeholder="제목을 입력해 주세요"
-					name="notice_title" /><br><br>
-					<textarea id="content" name="notice_content"></textarea><br> 
-					<input id="file" name="noticeFile" type="file" /><br><br>
-					<button id="reset" type="button">취소</button>
-					<button type="submit">등록</button>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<h1>게시물 작성</h1><br>
+			</header>
+			
+			<nav id="nav">
+				<ul>
+					<li><a href="#intro" class="active">Introduction</a></li>
+					<li><a href="#first">First Section</a></li>
+					<li><a href="#second">Second Section</a></li>
+					<li><a href="#cta">Get Started</a></li>
+				</ul>
+			</nav>
+
+				<!-- Main -->
+				<div id="main">
+				<section id="content" class="main">
+					<form action="<%=request.getContextPath()%>/board/upload.do"
+						method="post" enctype="multipart/form-data">
+						<div class="wrapper">
+							<div id="write">
+								<div id="write">
+									<input id="title" maxlength="30" type="text" placeholder="제목을 입력해 주세요"
+									name="notice_title" /><br><br>
+									<textarea id="content" name="notice_content"></textarea><br> 
+									<input id="file" name="noticeFile" type="file" /><br><br>
+									<button id="reset" type="button">취소</button>
+									<button type="submit">등록</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</section>
 				</div>
 			</div>
-		</div>
-	</form>
 	
 	<script src="https://code.jquery.com/jquery-3.5.0.js"
 		integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
@@ -37,6 +56,13 @@
 		$('#reset').click(function() {
 			history.back();
 		})
+		
+		$('#content').on('keyup', function() {
+			if($(this).val().length > 700) {
+				alert("글자수는 700자로 이내로 제한됩니다.");
+				$(this).val($(this).val().substring(0, 700));
+			}
+		});
 	</script>
 </body>
 </html>
