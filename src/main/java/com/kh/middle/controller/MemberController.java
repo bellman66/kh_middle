@@ -50,14 +50,6 @@ public class MemberController {
 	 * 
 	 */
 	
-	@RequestMapping("index.do")
-	public ModelAndView index(ModelAndView mav) {
-		
-		mav.setViewName("member/index");
-		
-		return mav;
-	}
-	
 	@RequestMapping("memberloginpage.do")
 	public ModelAndView LoginPage(ModelAndView mav) {
 		mav.setViewName("member/Login");
@@ -74,7 +66,6 @@ public class MemberController {
 	 */
 	@RequestMapping("memberlogin.do")
 	public ModelAndView memberLogin(ModelAndView mav, HttpServletRequest request,HttpServletResponse response) throws Exception {
-		System.out.println("hello");
 		Member m = new Member();
 
 		m.setUser_id(request.getParameter("userId"));
@@ -85,7 +76,7 @@ public class MemberController {
 		if (mem != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userData", mem);
-			mav.setViewName("member/index");
+			mav.setViewName("steller/index");
 			
 		} else {
 			mav.addObject("isSuccess", "false");
@@ -126,10 +117,8 @@ public class MemberController {
 		Member m = new Member();
 		m.setUser_id(request.getParameter("user_id"));
 		m.setUser_pw(request.getParameter("user_pw"));
-		m.setNick_name(request.getParameter("nickname"));
+		m.setNick_name(request.getParameter("checkNick"));
 		m.setKind_oil(request.getParameter("oil_kind"));
-		m.setEmail(request.getParameter("email"));
-		m.setUser_tell(request.getParameter("user_tell"));
 		
 		Member res = memberService.joinImple(m);
 		
@@ -346,7 +335,7 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("userData", kakaoUser);
 			session.setAttribute("accessToken", authorCode);
-			mav.setViewName("member/index");
+			mav.setViewName("steller/index");
 		}else {
 			if(memberService.selectNickname(nickname) != null) {
 				mav.addObject("nickNameFlag", "false");
@@ -398,7 +387,7 @@ public class MemberController {
 			
 		 }
 			 
-		response.sendRedirect("/middle/member/index.do");
+		response.sendRedirect("/middle/steller/index.do");
 	}
 	
 	@RequestMapping("mypage.do")

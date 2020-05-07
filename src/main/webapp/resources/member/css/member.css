@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+/* login page */
+
+.memberLoginUserId,.memberLoginUserPw{
+	
+	transform:translateX(285%);
+	
+}
+
+.buttonWrapper button{
+	font-size:90%;
+	
+	transform:translateX(-15%);
+}
+
+a{
+	text-decoration: none !important;
+}
+
+
+.loginImple, .socialLogin{
+	align:center;
+	text-align:center;
+	line-height:200%;
+}
+
+.buttonWrapper{
+	line-height:300%;
+	
+}
+.loginBnt{
+	
+	border-radius: 5px; 
+	margin-left:3%;
+}
+
+.joinBnt{
+	border-radius: 5px; 
+	margin-left:0.5%;
+}
+
+.loginMsg{
+	color:white;
+}
+
+
+/* member MyPage 시작 */
+.myPageWrapper{
+	text-align:center;
+	
+}
+.mypageMemberWrapper{
+	margin-right:10%;
+	height:200%;
+}
+.myPageWrapper div{
+	
+	
+    border-bottom: 1px solid #e8e9ed;
+	font-size:1.5vw;
+}
+
+.loginMsg{
+	
+	text-align:100%;
+	line-height:200%;
+	font-size:2vw;
+}
+
+
+
+.t{
+	margin-right:40%;	
+}
+
+/* memberJoin시작 */
+
+.user_id,.user_pw,.user_pw2,.oil_kind,.nick,.captchar{
+	
+	height: 1.5em !important;
+}
+
+.oil_kind{
+	font-size:15px;
+}
+
+.joinWrapper button{
+	font-size:10px;
+	border-radius: 5px;
+}
+
+.joinWrapper h1, .memberLoginWrapper h1{
+	text-align:center;
+}
+
+.joinWrapper button{
+	font-size:60%;
+}
+
+.join{
+	margin-top:1%;
+	margin-left:43%;
+	font-size:120%;
+	
+}
+.oil.kind{
+	
+	font-size:100%;
+}
+
+.addMsg{
+	font-size:80%;
+}
+
+.captcharWrapper{
+	margin-top:3%;
+}
+
+.joinWrapper strong{
+	color:white;
+}
+
+/* afterkakaoJoin page */
+
+.afterKakaoJoin{
+	transform:translateX(40%);
+	margin-top:10%;
+	lign-height:200%;
+}
+
+.afterKakaoJoin button{
+	border-radius: 5px; 
+	font-size:80%;
+}
+
+
