@@ -1,6 +1,10 @@
 $(function () {
-    // 중요
-    // 해당 객체들을 통해서 html이 움직여짐.
+	// 중요
+	
+	// session 값 업데이트 
+	var user_id = sessionStorage.getItem('user_id');
+	console.log(user_id);
+	
     var contextPath = "${pageContext.request.contextPath}";
     var local = new kakao.maps.Coords(5000.0, 100000.0);
 
@@ -243,7 +247,8 @@ $(function () {
             // kakao.maps.event.addListener(marker, 'mouseover', function () {
             // overlay.setMap(map);
             // });
-            // kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(overlay,marker));
+            // kakao.maps.event.addListener(marker, 'mouseout',
+			// makeOutListener(overlay,marker));
 
             // 마커 저장.
             Makers.push(marker);
@@ -251,7 +256,7 @@ $(function () {
     }
 
     function set_Overlay(data) {
-    	var review = [];
+
         var overlay = new kakao.maps.CustomOverlay({
             // 1. 인포 윈도우 설정.
             position: data.latlng,
@@ -259,29 +264,32 @@ $(function () {
             clickable: true,
             zIndex : 1
         });
+        var review = [];
         var view = null;
         var review_part = null;
 
-        // pointer2
     	// 1. 별점 및 리뷰 가져오는 ajax
-    	$.ajax({
-    		type : "GET" ,
-    		url : "/middle/review/index.do",
-    		async : false ,
-    		data: "uni_id=" + data.content.UNI_ID,
-    		dataType: "text",
-            success: function (data, status) {
-            	if(data.length > 0) {
-            		 json = JSON.parse(data);
-            		 for(var i = 0 ; i < json.length ; i++) {
-            			review.push(json[i]);
-            		 }
-            	}
-            },
-            error: function (xhr, err) {
-                alert("연결 실패");
-            }
-    	})
+        
+        // pointer 2
+        review = setReview(data.content.UNI_ID);
+//    	$.ajax({
+//    		type : "GET" ,
+//    		url : "/middle/review/index.do",
+//    		async : false ,
+//    		data: "uni_id=" + data.content.UNI_ID,
+//    		dataType: "text",
+//            success: function (data, status) {
+//            	if(data.length > 0) {
+//            		 json = JSON.parse(data);
+//            		 for(var i = 0 ; i < json.length ; i++) {
+//            			review.push(json[i]);
+//            		 }
+//            	}
+//            },
+//            error: function (xhr, err) {
+//                alert("연결 실패");
+//            }
+//    	})
 
         // 2.custom over lay 제작 - 리뷰 값 3개 + 별점
     	// page custom view - 없을 경우 null 값을 가짐.
@@ -335,6 +343,7 @@ $(function () {
         }
         else {
             var ul2 = document.createElement('ul');
+            ul2.id="review";
             var li4 = document.createElement('li');
             li4.className = 'up';
 
@@ -349,6 +358,7 @@ $(function () {
         var span5 = document.createElement('span');
         span5.innerHTML = '<리뷰 입력>';
         span5.setAttribute("isOpen" , "false");
+        span5.style.color = "#aaabaf";
         span5.onclick = function() {
             // 로그인이 안되있음.
             if(span5.getAttribute("isOpen") === "false") {
@@ -359,6 +369,7 @@ $(function () {
                     alert('로그인시 이용가능합니다.');
                     // 실험용 textarea
                     span5.innerHTML = "<리뷰 닫기>";
+                    span5.style.color = "#aaabaf";
 
                     var textdiv = document.createElement('div');
                     textdiv.className = 'textdiv';
@@ -396,8 +407,10 @@ $(function () {
                     textarea.style.resize = "none"; // 사이즈 고정
                     textdiv.appendChild(textarea);
 
-                    var button = document.createElement('button');
+                    var button = document.createElement('div');
                     button.textContent = "리뷰 등록";
+                    button.style.color = "#aaabaf";
+                    
                     button.addEventListener('click' , function () {
                         // 실험용
                         alert(textarea.value) ;
@@ -406,19 +419,24 @@ $(function () {
                         $.ajax({
                             type : "POST" ,
                             url : "/middle/review/review_insert.do" ,
+                            async : true ,
                             data : {
-                                //userData : sessionStorage.getItem("userData") ,
+                                // userData : sessionStorage.getItem("userData")
+								// ,
                                 content : textarea.value ,
                                 uni_id : data.content.UNI_ID ,
                                 rating : rating
-                            } ,
-                            success : function (data, status) {
-                                alert('리뷰 등록 완료');
-                                alert("결과값 : " + data);
-                                close_review(span5,view);
-                            }
-
-                        });
+                            } 
+                        }).done(function (data , textStatus ,xhr) {
+                            alert('리뷰 등록 완료');
+                            close_review(span5,view);
+                            
+                            // pointer
+                            var reviewlist = setReview(data);	// 가져오기완료
+                            var review_part = setView(reviewlist);
+                            $("#review").replaceWith(review_part);
+//                            view.appendChild(review_part);
+                        })
                     })
                     textdiv.appendChild(button);
 
@@ -453,6 +471,7 @@ $(function () {
     // String content; //리뷰 내용
         console.log(review);
     	var ul = document.createElement('ul');
+    	ul.id = "review";
 
     	for(var i = 0 ; i < review.length ; i++) {
             var li = document.createElement('li');
@@ -469,13 +488,12 @@ $(function () {
 
             var star = document.createElement("div");
             star.id = "star";
-            // %%%% dev pointer1
+
             for(var j = 1 ; j < 6 ; j++)
             {
                 var in_star = document.createElement("a");
                 in_star.setAttribute("value" , j);
 
-                console.log("rating 확인 : " + parseInt(review[i].rating));
                 if(parseInt(review[i].rating) >= j) {
                     in_star.className = "on";
                 }
@@ -488,6 +506,31 @@ $(function () {
     	}
 
     	return ul;
+    }
+    
+    function setReview(uni_id){
+    	var review = [];
+    	
+		$.ajax({
+			type : "GET" ,
+			url : "/middle/review/index.do",
+			async : false ,
+			data: "uni_id=" + uni_id,
+			dataType: "text",
+	        success: function (data, status) {
+	        	if(data.length > 0) {
+	        		 json = JSON.parse(data);
+	        		 for(var i = 0 ; i < json.length ; i++) {
+	        			review.push(json[i]);
+	        		 }
+	        	}
+	        },
+	        error: function (xhr, err) {
+	            alert("연결 실패");
+	        }
+		})
+		
+		return review
     }
 
     function avgAllPrice() {

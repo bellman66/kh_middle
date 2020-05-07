@@ -1,7 +1,7 @@
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
+<%@ page session="true"%>
 
 <!DOCTYPE HTML>
 <html>
@@ -13,7 +13,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
+			<p> ${sessionScope.userData} </p>
 		<!-- Wrapper -->
 			<div id="wrapper">
 

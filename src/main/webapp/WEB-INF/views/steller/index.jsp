@@ -1,9 +1,8 @@
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
+<%@ page session="true" %>
 
-<!doctype html>
 <html>
 <head>
     <title> Hello I'M  Oil Finder </title>
@@ -25,14 +24,24 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	if(${sessionScope.userData!=null}) {
+		sessionStorage.setItem("user_id","${sessionScope.userData.user_id}");
+		sessionStorage.setItem("kind_oil","${sessionScope.userData.kind_oil}");
+		sessionStorage.setItem("nick_name","${sessionScope.userData.nick_name}");
+	}
+</script>
+
 <style>
     .overlaybox {
         position: relative;
         width: auto;
         height: auto;
-        background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png') no-repeat;
+        /* background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png') no-repeat; */
+        background-color : #48494B;
         padding: 15px 10px;
         border: 1px solid red;
+        border-radius: 10px;
     }
 
     .overlaybox div, ul {
@@ -90,6 +99,7 @@
 
     .overlaybox ul {
         width: 247px;
+        max-width: 247px;
     }
 
     .overlaybox li {
@@ -102,16 +112,18 @@
     }
 
     .overlaybox li span {
-        display: inline-block;
+        display: inline-block; 
     }
 
     .overlaybox li .number {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: bold;
+        left: 2px;
     }
 
     .overlaybox li .title {
         font-size: 13px;
+        left: 20px;
     }
 
     .overlaybox ul .arrow {
@@ -174,7 +186,25 @@
     .close_btn:hover {
         cursor: pointer;
     }
+    
+    .buttonWrapper {
+    	width : auto ;
+    	height : auto;
+    	float : left; 
+    } 
+    
+    .buttonWrapper #product {
+    	width : auto ;
+    	height : auto;
+    	float : left; 
+    }
 
+    .buttonWrapper #text {
+    	width : 100px;
+    	height : auto;
+    	float : left; 
+    }
+    
     #star a{ text-decoration: none; color: gray; }
     #star a.on{ color: red; }
 
@@ -183,38 +213,6 @@
 
 </head>
 <body class="is-preload">
-
-<header class="topWrapper">
-    <div class="top">
-
-        <div class="topLogo">
-            <a href="${pageContext.request.contextPath}/steller/index.do">
-                <b>
-                    Oil  <br>
-                    Finder
-                </b>
-            </a>
-        </div>
-
-        <div class="topSearchBar">
-            <input Type="text" placeholder="검색어를 입력하세요">
-            <button value="" class="">
-                <i class="fas fa-search" style="color: black"></i>
-            </button>
-        </div>
-
-        
-            <div class="topLogin">
-                <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
-                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-            </div>
-        
-
-        
-        
-    </div>
-</header>
-
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -249,50 +247,28 @@
                     <header class="major">
                         <h2>오늘자 평균 주유 가격</h2>
                     </header>
-
+                    
                     <table class="table-bordered">
-                        <thead class="thead-dark">
+                       	<thead class="thead-dark">
                         <tr>
                             <th scope="col">제품명</th>
                             <th scope="col">평균가격</th>
                             <th scope="col">등락값</th>
                         </tr>
                         </thead>
-
                         <tbody>
-                        
-                            <tr>
-                                <th scope="row">고급휘발유</th>
-                                <td>1583.95</td>
-                                <td>-1.29</td>
-                            </tr>
-                        
-                            <tr>
-                                <th scope="row">휘발유</th>
-                                <td>1256.15</td>
-                                <td>-1.18</td>
-                            </tr>
-                        
-                            <tr>
-                                <th scope="row">자동차용경유</th>
-                                <td>1067.12</td>
-                                <td>-1.31</td>
-                            </tr>
-                        
-                            <tr>
-                                <th scope="row">실내등유</th>
-                                <td>809.10</td>
-                                <td>-2.22</td>
-                            </tr>
-                        
-                            <tr>
-                                <th scope="row">자동차용부탄</th>
-                                <td>728.38</td>
-                                <td>-1.09</td>
-                            </tr>
-                        
-                        </tbody>
-                    </table>
+	                    <c:forEach var="vo" items="${avgAllPrice}"> 
+	                    	<c:if test="${vo.PRODCD ne 'C004'}">
+	                    	<tr>
+	                    		<th scope="row"> ${vo.PRODNM} </th>
+                                <td>${vo.PRICE}</td>
+                                <td>${vo.DIFF}</td>
+	                    	</tr>
+	                    	</c:if>
+	                    </c:forEach>
+						</tbody>
+					</table>
+				
                 </div>
                 <span class="image"><img src="${pageContext.request.contextPath}/resources/steller/images/fuel.png"
                                          alt=""/></span>
@@ -307,7 +283,7 @@
 
             <!-- kakao map.  -->
             <div class="map_wrap">
-                <div id="map" style="width: 100%; height: 350px;"></div>
+                <div id="map" style="width: 100%; height: 500px;"></div>
             </div>
 
             <div class="buttonWrapper">
@@ -326,7 +302,7 @@
             </div>
         </section>
 
-        <!-- Second Section -->
+<!--         Second Section
         <section id="second" class="main special">
             <header class="major">
                 <h2> 개발 페이지 </h2>
@@ -346,7 +322,7 @@
             <input type="text" class="kv-fa rating-loading" value="2" data-size="xs" title="">
             <br>
 
-        </section>
+        </section> -->
 
         <!-- Get Started -->
         <section id="cta" class="main special">
@@ -399,6 +375,7 @@
 </div>
 
 <!-- Scripts -->
+
 <script src="${pageContext.request.contextPath}/resources/steller/assets/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/steller/assets/js/jquery.scrollex.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/steller/assets/js/jquery.scrolly.min.js"></script>

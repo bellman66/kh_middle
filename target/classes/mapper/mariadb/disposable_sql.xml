@@ -27,18 +27,25 @@
 	
 
 	
-	<!-- 리뷰  -->
-	<insert id="insert_review" parameterType="com.kh.middle.review.vo.Review">
-		INSERT INTO review_semi VALUES ( null, #{uni_id}, #{user_id}, #{rating}, #{content})
-		
-	</insert>
+	<!-- 리뷰 추가 및 리뷰 모아두는 프로시저 부르기  -->
+	<update id="insert_review" parameterType="com.kh.middle.review.vo.Review" statementType="CALLABLE">
+        call REVIEW_PROCEDURE( #{uni_id}, #{user_id}, #{rating}, #{content} );
+	</update>
 	
-	<!--  -->
+	<!-- 저장된 리뷰들 불러오기 -->
 	<select id = "select_review" 
 	parameterType="String"
 	resultType="com.kh.middle.review.vo.Review">
-		SELECT * FROM review_semi WHERE  uni_id = #{uni_id} ORDER BY review_no DESC limit 3;
+		SELECT * FROM review_semi WHERE uni_id = #{uni_id} ORDER BY review_no DESC limit 3;
 	</select>
+	
+	<!-- 주유소 평균점수 불러오기 -->
+	<select id = "review_avg"
+	parameterType="String"
+	resultType="double">
+		SELECT ROUND(total_avg, 1) FROM review_stack_semi WHERE uni_id = #{uni_id} ;
+	</select>
+	
 	
 	<select id="kakao_id_check" resultType="com.kh.middle.bean.member.Member">
 	

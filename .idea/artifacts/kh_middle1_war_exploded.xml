@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="kh_middle1:war exploded">
+    <output-path>$PROJECT_DIR$/../../../Java/compile/artifacts/kh_middle1_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="kh_middle1" />
+        </element>
+      </element>
+      <element id="library" level="project" name="java" />
+      <element id="javaee-facet-resources" facet="kh_middle1/web/Web" />
+    </root>
+  </artifact>
+</component>

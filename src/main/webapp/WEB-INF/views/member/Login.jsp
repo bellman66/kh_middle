@@ -35,7 +35,7 @@
 					</div>			
 					<br>
 			<div class="buttonWrapper">
-				<button type="submit" class="loginBnt">로그인</button><button type="button" onclick="location.href='<%=request.getContextPath() %>/member/memberjoin.do'"class="joinBnt">회원가입</button>
+				<button type="submit" id="loginBnt" class="loginBnt">로그인</button><button type="button" onclick="location.href='<%=request.getContextPath() %>/member/memberjoin.do'"class="joinBnt">회원가입</button>
 			</div>
 		</form>
 	</div>
@@ -58,9 +58,8 @@
 	<c:if test="${kakaoJoin eq 'true'}">
 		alert("카카오 회원가입이 성공했습니다");
 	</c:if>
-	 
  }
-
+ 
 init();
 </script>
 

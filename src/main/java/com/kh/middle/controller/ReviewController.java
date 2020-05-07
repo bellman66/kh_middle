@@ -48,7 +48,7 @@ public class ReviewController {
 		return jsonstring;
 	}
 	
-	@RequestMapping(value = "index.do",
+	@RequestMapping(value = "review_avg.do",
 			method= {RequestMethod.GET, RequestMethod.POST}, 
 			produces="text/plain;charset=UTF-8")
 	@ResponseBody

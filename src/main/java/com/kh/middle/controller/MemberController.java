@@ -72,12 +72,11 @@ public class MemberController {
 		m.setUser_pw(request.getParameter("userPass"));
 
 		Member mem = memberService.memberLogin(m);
-		
+
 		if (mem != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userData", mem);
 			mav.setViewName("steller/index");
-			
 		} else {
 			mav.addObject("isSuccess", "false");
 			mav.setViewName("member/Login");
