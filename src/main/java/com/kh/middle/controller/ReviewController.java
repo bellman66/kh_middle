@@ -47,6 +47,21 @@ public class ReviewController {
 		jsonstring = gson.toJson(db_Service.select_review(uni_id));
 		return jsonstring;
 	}
+	
+	@RequestMapping(value = "index.do",
+			method= {RequestMethod.GET, RequestMethod.POST}, 
+			produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public Object review_avg(@RequestParam(value = "uni_id") String uni_id)
+			throws Exception {
+
+		Gson gson = new Gson();
+		String jsonstring = "";
+		
+		// 주유소의 평균점수
+		jsonstring = gson.toJson(db_Service.review_avg(uni_id));
+		return jsonstring;
+	}
 
 	@RequestMapping(value = "review_insert.do",
 			method= {RequestMethod.GET, RequestMethod.POST}, 

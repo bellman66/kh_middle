@@ -52,6 +52,13 @@ public class DB_DaoImpl implements DB_Dao {
 		
 		sqlsession.insert("sql.insert_review", review);
 	}
+
+	@Override
+	public List<Review> review_avg(String uni_id) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlsession.selectList("sql.review_avg", uni_id);
+	}
 	
 	// Product Dao end
 

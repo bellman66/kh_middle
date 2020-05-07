@@ -57,6 +57,12 @@ public class DB_ServiceImpl implements DB_Service{
 
 		DB_Dao.insert_review(review);
 	}
+
+	@Override
+	public List<Review> review_avg(String uni_id) throws Exception {
+		// TODO Auto-generated method stub
+		return DB_Dao.review_avg(uni_id);
+	}
 	
 	
 }

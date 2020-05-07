@@ -25,8 +25,8 @@ public interface DB_Service {
 	// reviewDao_insert
 	public void  insert_review(Review review) throws Exception;	
 	
-	
-
+	// reviewDao_avg
+	public List<Review> review_avg(String uni_id) throws Exception;
 	
 	
 }
