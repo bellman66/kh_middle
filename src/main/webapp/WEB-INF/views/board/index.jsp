@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
 		<style>
 		.pagination { 
-		  display: inline-block;
+	 	  display: inline-block;
 		  transform:translateX(29%);
 		}
 		

@@ -37,7 +37,7 @@ import com.kh.middle.notice.vo.Comment;
 import com.kh.middle.notice.vo.Notice;
 import com.kh.middle.notice.vo.PageDefault;
 import com.kh.middle.notice.vo.Paging;
-  
+   
 @Controller
 @RequestMapping("/board")
 @Transactional(rollbackFor = { Exception.class })

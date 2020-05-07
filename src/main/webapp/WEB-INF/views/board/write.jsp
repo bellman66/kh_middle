@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
 	<body class="is-preload"> 
-
+ 
 		<!-- Wrapper -->
 			<div id="wrapper">
 

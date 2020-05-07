@@ -11,7 +11,7 @@
 	rel="stylesheet" />
 </head>
 <body>
-	
+ 	
 	<body class="is-preload">
 
 		<!-- Wrapper -->
@@ -19,7 +19,6 @@
 
 			<!-- Header -->
 			<header id="header">
-				<h1>SEARCH RESULT</h1><br>
 			</header>
 			
 				<!-- Main -->
