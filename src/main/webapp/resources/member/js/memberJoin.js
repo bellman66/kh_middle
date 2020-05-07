@@ -50,10 +50,10 @@
 										"/middle/resources/member/captchar/"
 												+ data.img);
 						$("#capctharRes").val('');
-						$("#captcharAnswer").html("인증 실패!");
+						$("#captcharAnswer").html("<strong>인증 실패!</strong>");
 					}else{
 						captcharFlag = true;
-						$("#captcharAnswer").html("인증 성공!");
+						$("#captcharAnswer").html("<strong>인증 성공!</strong>");
 					}
 				}
 				
@@ -134,13 +134,13 @@
 			var regExpId = /^[a-z][a-zA-Z0-9]{3,9}$/;
 
 			if ($("#user_id").val() == "") {
-				$("#idcheck").html("아이디를 입력해주세요");
+				$("#idcheck").html("<strong>아이디를 입력해주세요</strong>");
 				return false;
 			}
 
 			if (!regExpId.test($("#user_id").val())) {
 				$("#idcheck").html(
-						"아이디는 영문 숫자조합으로 4글자 이상 10글자 이하로 입력해주세요(특수문자 제외)");
+						"<strong>아이디는 영문 숫자조합으로 4글자 이상 10글자 이하로 입력해주세요(특수문자 제외)</strong>");
 				return false;
 			}
 
@@ -151,11 +151,11 @@
 				data : $("#user_id").serialize(),
 				success : function(data) {
 					if (data == "true") {
-						$("#idcheck").html("사용가능한 아이디 입니다");
+						$("#idcheck").html("<strong>사용가능한 아이디 입니다</strong>");
 						idFlag = true;
 					} else {
 						$("#idcheck").html("");
-						$("#idcheck").html("중복된 아이디가 존재하니 다른 아이디를 입력해주세요");
+						$("#idcheck").html("<strong>중복된 아이디가 존재하니 다른 아이디를 입력해주세요</strong>");
 					}
 				}
 			});
@@ -167,10 +167,10 @@
 			var rePw = $("#user_pw2").val();
 
 			if (oriPw == rePw) {
-				$("#pwCheck2").html("비밀번호가 일치합니다.");
+				$("#pwCheck2").html("<strong>비밀번호가 일치합니다.</strong>");
 				pwFlag = true;
 			} else {
-				$("#pwCheck2").html("비밀번호가 다릅니다.");
+				$("#pwCheck2").html("<strong>비밀번호가 다릅니다.</strong>");
 			}
 
 			return pwFlag2;
@@ -185,11 +185,11 @@
 							var oriPw = $("#user_pw").val();
 							var pw = regExpPw.test(oriPw)
 							if (pw) {
-								$("#pwCheck").html("사용할 수 있는 비밀번호입니다.");
+								$("#pwCheck").html("<strong>사용할 수 있는 비밀번호입니다.</strong>");
 							} else {
 								$("#pwCheck")
 										.html(
-												"비밀번호는 영문, 숫자, 특수문자 포함하여 8자리 이상 20자리 이하로 기입해주세요");
+												"<strong>비밀번호는 영문, 숫자, 특수문자 포함하여 8자리 이상 20자리 이하로 기입해주세요</strong>");
 							}
 						});
 
@@ -205,11 +205,11 @@
 					console.log($("#nickname").val());
 					if (data == 'true') {
 						$("#nickCheck").html("");
-						$("#nickCheck").html("사용가능한 닉네임입니다");
+						$("#nickCheck").html("<strong>사용가능한 닉네임입니다</strong>");
 						nickFlag = true;
 					} else {
 						$("#nickCheck").html("");
-						$("#nickCheck").html("사용불가능한 닉네임입니다");
+						$("#nickCheck").html("<strong>사용불가능한 닉네임입니다</strong>");
 						nickFlag = false;
 					}
 
