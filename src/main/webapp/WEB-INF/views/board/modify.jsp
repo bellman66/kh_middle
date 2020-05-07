@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
 <link href="${pageContext.request.contextPath}/resources/css/board/modify.css"
@@ -21,16 +21,6 @@
 				<h1>게시물 수정</h1><br>
 			</header>
 			
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="#intro" class="active">Introduction</a></li>
-					<li><a href="#first">First Section</a></li>
-					<li><a href="#second">Second Section</a></li>
-					<li><a href="#cta">Get Started</a></li>
-				</ul>
-			</nav>
-
 			<!-- Main -->
 			<div id="main">
 			<section id="content" class="main">

@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
 		<style>
-		.pagination {
+		.pagination { 
 		  display: inline-block;
 		  transform:translateX(29%);
 		}
@@ -37,15 +37,6 @@
 			<header id="header">
 			</header>
 					
-			<nav id="nav">
-				<ul>
-					<li><a href="#intro" class="active">Introduction</a></li>
-					<li><a href="#first">First Section</a></li>
-					<li><a href="#second">Second Section</a></li>
-					<li><a href="#cta">Get Started</a></li>
-				</ul>
-			</nav>
-
 				<!-- Main -->
 				<div id="main">
 				<section id="content" class="main">

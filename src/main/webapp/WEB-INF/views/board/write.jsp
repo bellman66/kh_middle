@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
-	<body class="is-preload">
+	<body class="is-preload"> 
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -17,15 +17,6 @@
 				<h1>게시물 작성</h1><br>
 			</header>
 			
-			<nav id="nav">
-				<ul>
-					<li><a href="#intro" class="active">Introduction</a></li>
-					<li><a href="#first">First Section</a></li>
-					<li><a href="#second">Second Section</a></li>
-					<li><a href="#cta">Get Started</a></li>
-				</ul>
-			</nav>
-
 				<!-- Main -->
 				<div id="main">
 				<section id="content" class="main">
