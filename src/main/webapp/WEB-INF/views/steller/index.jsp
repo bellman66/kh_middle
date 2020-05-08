@@ -55,12 +55,13 @@
     }
 
     .overlaybox .boxtitle {
+    	width : 60%;
         color: #fff;
         font-size: 16px;
         font-weight: bold;
-        background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png') no-repeat right 120px center;
         margin-bottom: 8px;
         float: left;
+        white-space: pre-line;
     }
 
     .overlaybox .first {
@@ -168,45 +169,92 @@
     }
 
     .close_btn {
-        position: relative;
+        position: absolute;
+        background-color : white !important;
         border: 1px solid red;
         float: left;
-        margin : 0 0 0 0;
-        top: 0;
-        right: 5px;
-        color: #ffffff;
-        width: 10px !important;
-        height: 10px !important;
-        max-width: 15px;
-        max-height: 15px;
-        background-size: auto;
-        background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png') no-repeat;
+        top: 10px;
+        right: 7px;
+        color: gray;
+        font-size : 6px;
+        height: 19px ;
+        background-size: 10px;
+        background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png') no-repeat; background-position: center;
+        
     }
 
     .close_btn:hover {
         cursor: pointer;
     }
     
+    #star_avg {
+    	position: relative;
+    	top: 17px;
+    }
+    
+    #star_avg a{ 
+    	text-decoration: none; 
+    	color: gray; 
+    	}
+    #star_avg a.on{ 
+    	color: red; 
+    	}
+    
+    
+    #star a{ 
+    	text-decoration: none; 
+    	color: gray; 
+    	}
+    #star a.on{ 
+    	color: red; 
+    	}
+    
+    
     .buttonWrapper {
-    	width : auto ;
-    	height : auto;
+    	top:50%;
+    	left:50%;
+    	
+   		width:200px; height:200px;
+    	/* width : auto ;
+    	height : auto; */
     	float : left; 
+    	margin-top : 1vw;
+    	text-align: center;
+    	
     } 
     
-    .buttonWrapper #product {
-    	width : auto ;
+    .buttonWrapper {
+    	width : 100% ;
     	height : auto;
-    	float : left; 
+    	
+    	
     }
-
-    .buttonWrapper #text {
-    	width : 100px;
+    .product {
+    	position : relative;
+    	margin-top : 3px;
+    	width : 20% ;
     	height : auto;
-    	float : left; 
+    	left :38%;
     }
     
-    #star a{ text-decoration: none; color: gray; }
-    #star a.on{ color: red; }
+    .fs {
+    	margin-top : 4px;
+   		position : relative;
+    	width : 40% ;
+    	height : auto;
+    	left :28%;
+    }
+
+    .button_wrap {
+  	    margin-top : 6px;
+    	position : relative;
+    	width : 40%;
+    	height : auto;
+    	left : 28%;
+    }
+    
+    
+    
 
 
 </style>
@@ -287,17 +335,19 @@
             </div>
 
             <div class="buttonWrapper">
-                <select id="product" name="prodcut">
+                <div class="product">
+                <select id="product" name="product">
                     <option value="B027" selected="selected"> 휘발유</option>
                     <option value="D047"> 경유</option>
                     <option value="K015"> LPG</option>
                     <option value="B034"> 고급휘발유</option>
                 </select>
-
+                </div>
+				<div class="fs">
                 <input type="text" name="fs" id="fs" placeholder="연비 입력">
-
+				</div>
                 <div class="button_wrap">
-                    <button id="find_button"> 추천 주유소</button>
+                    <button id="find_button"> 추천 주유소 검색</button>
                 </div>
             </div>
         </section>
@@ -325,9 +375,9 @@
         </section> -->
 
         <!-- Get Started -->
-        <section id="cta" class="main special">
-            <header class="major">
-                <h2>Congue imperdiet</h2>
+     <!--   <section id="cta" class="main special">
+             <header class="major">
+                 <h2>Congue imperdiet</h2>
                 <p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br/>
                     posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
             </header>
@@ -335,15 +385,14 @@
                 <ul class="actions special">
                     <li><a href="generic.html" class="button primary">Get Started</a></li>
                     <li><a href="generic.html" class="button">Learn More</a></li>
-                </ul>
-            </footer>
-        </section>
-
+                </ul> 
+            </footer> 
+        </section>  -->
     </div>
 
     <!-- Footer -->
-    <footer id="footer">
-        <section>
+     <footer id="footer">
+        <!-- <section>
             <h2>Aliquam sed mauris</h2>
             <p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore
                 veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit,
@@ -370,7 +419,7 @@
                 <li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
             </ul>
         </section>
-        <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p> -->
     </footer>
 </div>
 

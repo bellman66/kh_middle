@@ -18,11 +18,17 @@
 	
 	</select>
 	
-	<select id="nick_name_select" parameterType="String" resultType="java.lang.String">
+	<select id="nick_name_select" parameterType="java.lang.String" resultType="java.lang.String">
 	
 		select nick_name from member_semi where nick_name = #{nick_name}
 	
 	</select>
+	
+	<update id="member_withdraw" parameterType="java.lang.String">
+	
+		update member_semi set leave_yn = 'Y' where user_id = #{user_id}
+	
+	</update>
 
 	
 
@@ -54,7 +60,7 @@
 	<select id = "review_avg"
 	parameterType="String"
 	resultType="float">
-		SELECT ROUND(total_avg, 1) FROM review_stack_semi WHERE uni_id = #{uni_id} ;
+		SELECT ROUND( IFNULL(total_avg,0), 1) FROM review_stack_semi WHERE uni_id = #{uni_id} ;
 	</select>
 	
 	<select id="kakao_id_check" resultType="com.kh.middle.bean.member.Member">
@@ -65,10 +71,16 @@
 	
 	
 	<select id="login" resultType="com.kh.middle.bean.member.Member">
-	 
-		select user_id, nick_name,m_code,kind_oil from member_semi where user_id = #{user_id}
+	
+		select user_id, nick_name,m_code,kind_oil, leave_yn from member_semi where user_id = #{user_id}
 	
 	</select>
+	
+	<update id="update_kakao_leave_yn" parameterType="java.lang.String">
+	
+		update member_semi set leave_yn = 'N' where user_id = #{user_id}
+	
+	</update>
 	
 	<!-- insert -->
 	
@@ -90,7 +102,7 @@
 	</select>
 	
 	<insert id="insert_notice" parameterType="com.kh.middle.notice.vo.Notice">
-		insert into notice_semi values(null, #{notice_title}, '김지수', sysdate(), 0, 0, #{notice_content}
+		insert into notice_semi values(null, #{notice_title}, #{notice_id} , sysdate(), 0, 0, #{notice_content}
 		, #{original_filepath}, #{rename_filepath})
 	</insert>
 	

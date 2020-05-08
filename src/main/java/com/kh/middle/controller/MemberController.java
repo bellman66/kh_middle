@@ -151,6 +151,9 @@ public class MemberController {
 	
 	@RequestMapping("nicknamecheck.do")
 	public void nickNameCheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
 		System.out.println("nicknameCheck");
 		String check = memberService.selectNickname(request.getParameter("checkNick"));
 	

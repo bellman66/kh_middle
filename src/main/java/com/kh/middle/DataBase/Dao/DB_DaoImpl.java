@@ -57,7 +57,9 @@ public class DB_DaoImpl implements DB_Dao {
 	public float review_avg(String uni_id) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return sqlsession.selectOne("sql.review_avg", uni_id);
+		Object num = sqlsession.selectOne("sql.review_avg", uni_id);
+		float result = (num == null) ? 0 : Float.parseFloat(String.valueOf(num));
+		return result;
 	}
 	
 	// Product Dao end

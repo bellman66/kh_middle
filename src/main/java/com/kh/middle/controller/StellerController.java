@@ -42,7 +42,7 @@ public class StellerController {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, content-type, accept");
 
-		mv.setViewName("/steller/index");
+		mv.setViewName("steller/index");
 
 		mv.addObject("avgAllPrice", api_control.avgAllPrice());
 		mv.addObject("avgRecentPrice", api_control.avgRecentPrice());

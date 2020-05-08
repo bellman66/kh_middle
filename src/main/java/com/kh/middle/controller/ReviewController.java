@@ -80,8 +80,9 @@ public class ReviewController {
 //			예외 발생시 예외가 발생한 곳을 알아낼 때 주로 사용된다.
 		ModelAndView mv = new ModelAndView();
 		
+		if(!e.getMessage().equals("null")) {
 		System.out.println(e.getMessage());
-		System.out.println(e.toString());
+		}
 		mv.setViewName("/steller/index");
 		return null;
 	}

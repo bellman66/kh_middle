@@ -3582,7 +3582,7 @@ input, select, textarea {
 		}
 
 		#main > .main {
-			padding: 5em 5em 3em 5em ;
+			padding: 5em 5em 12em 5em !important;
 			border-top: solid 1px #dddddd;
 		}
 

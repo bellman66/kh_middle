@@ -1,4 +1,4 @@
-$(function () {
+(function () {
 	// 중요
 	
 	// session 값 업데이트 
@@ -61,6 +61,8 @@ $(function () {
             // 현재 위치로 화면 전환 이후에 주변 주유소 서칭
             goToCenter2(position.coords.latitude, position.coords.longitude).then(function (value) {
                 if(value == "success"){
+                	var efficiency = $('#fs').val();
+                	sessionStorage.setItem('efficiency' , efficiency);
                     aroundAll();
                 }
             });
@@ -308,7 +310,7 @@ $(function () {
 	        }
     	})
         var star = document.createElement("div");
-        star.id = "star";
+        star.id = "star_avg";
         for(var j = 1 ; j < 6 ; j++)
         {
             var in_star = document.createElement("a");
@@ -329,16 +331,16 @@ $(function () {
     	    overlay.setMap(null);
     	}
     	wrap.appendChild(title);
-    	wrap.appendChild(star);
     	wrap.appendChild(close_btn);
+    	wrap.appendChild(star);
     	view.appendChild(wrap);
 
     	var ul1 = document.createElement('ul');
-    	var li1 = document.createElement('li');
-    	var span1 = document.createElement('span');
-    	span1.className = "title";
-    	span1.innerHTML = "주유소 코드 : " + data.content.UNI_ID;
-    	li1.appendChild(span1);
+//    	var li1 = document.createElement('li');
+//    	var span1 = document.createElement('span');
+//    	span1.className = "title";
+//    	span1.innerHTML = "주유소 코드 : " + data.content.UNI_ID;
+//    	li1.appendChild(span1);
 
     	var li2 = document.createElement('li');
     	var span2 = document.createElement('span');
@@ -351,7 +353,7 @@ $(function () {
     	span3.className = "title";
     	span3.innerHTML = "거리 : " + data.content.DISTANCE;
     	li3.appendChild(span3);
-    	ul1.appendChild(li1); ul1.appendChild(li2); ul1.appendChild(li3);view.appendChild(ul1);
+    	/*ul1.appendChild(li1);*/ ul1.appendChild(li2); ul1.appendChild(li3);view.appendChild(ul1);
     	// ul1 완성
 
         if(review_part != null) {
