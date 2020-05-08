@@ -26,10 +26,21 @@
 
 	
 
-	
+<!--int review_no;	//게시글 번호
+	String uni_id;  //주유소 아이디
+	String user_id; //회원 아이디
+	int rating; // 평점을 위한 필드추가
+	String content;	//리뷰 내용 -->
 	<!-- 리뷰 추가 및 리뷰 모아두는 프로시저 부르기  -->
 	<update id="insert_review" parameterType="com.kh.middle.review.vo.Review" statementType="CALLABLE">
-        call REVIEW_PROCEDURE( #{uni_id}, #{user_id}, #{rating}, #{content} );
+        {	
+        	call REVIEW_PROCEDURE(
+        							#{uni_id},
+        							#{user_id},
+        							${rating},
+        							#{content}
+        						 )
+    	}
 	</update>
 	
 	<!-- 저장된 리뷰들 불러오기 -->
@@ -42,10 +53,9 @@
 	<!-- 주유소 평균점수 불러오기 -->
 	<select id = "review_avg"
 	parameterType="String"
-	resultType="double">
+	resultType="float">
 		SELECT ROUND(total_avg, 1) FROM review_stack_semi WHERE uni_id = #{uni_id} ;
 	</select>
-	
 	
 	<select id="kakao_id_check" resultType="com.kh.middle.bean.member.Member">
 	

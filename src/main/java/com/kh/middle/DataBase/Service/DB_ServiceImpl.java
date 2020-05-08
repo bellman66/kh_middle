@@ -59,7 +59,7 @@ public class DB_ServiceImpl implements DB_Service{
 	}
 
 	@Override
-	public List<Review> review_avg(String uni_id) throws Exception {
+	public float review_avg(String uni_id) throws Exception {
 		// TODO Auto-generated method stub
 		return DB_Dao.review_avg(uni_id);
 	}

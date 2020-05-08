@@ -76,7 +76,7 @@ public class MemberController {
 		if (mem != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userData", mem);
-			mav.setViewName("steller/index");
+			mav.setViewName("redirect:/steller/index.do");	// redirect 요청 으로 바꿔준다.
 		} else {
 			mav.addObject("isSuccess", "false");
 			mav.setViewName("member/Login");

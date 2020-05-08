@@ -1,20 +1,9 @@
 package com.kh.middle.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,30 +45,29 @@ public class ReviewController {
 			throws Exception {
 
 		Gson gson = new Gson();
-		String jsonstring = "";
+		float jsonstring = 0;
 		
 		// 주유소의 평균점수
-		jsonstring = gson.toJson(db_Service.review_avg(uni_id));
-		return jsonstring;
+		jsonstring = db_Service.review_avg(uni_id);
+		return String.valueOf(jsonstring);
 	}
 
 	@RequestMapping(value = "review_insert.do",
 			method= {RequestMethod.GET, RequestMethod.POST}, 
 			produces="text/plain;charset=UTF-8")
 	@ResponseBody
-	public int review_insert(
+	public String review_insert(
 							@RequestParam(value = "content") String content ,
 							@RequestParam(value = "uni_id") String uni_id ,
-							@RequestParam(value = "rating") int rating
+							@RequestParam(value = "rating") int rating ,
+							@RequestParam(value = "user_id") String user_id
 							)
 			throws Exception {
-
-		int result = -1;
 		
-		Review review = new Review(uni_id, "test_user" , rating, content);
+		Review review = new Review(uni_id, user_id , rating, content);
 		db_Service.insert_review(review);
 		
-		return result;
+		return uni_id;
 	}
 
 

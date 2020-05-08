@@ -3,7 +3,6 @@ $(function () {
 	
 	// session 값 업데이트 
 	var user_id = sessionStorage.getItem('user_id');
-	console.log(user_id);
 	
     var contextPath = "${pageContext.request.contextPath}";
     var local = new kakao.maps.Coords(5000.0, 100000.0);
@@ -272,24 +271,6 @@ $(function () {
         
         // pointer 2
         review = setReview(data.content.UNI_ID);
-//    	$.ajax({
-//    		type : "GET" ,
-//    		url : "/middle/review/index.do",
-//    		async : false ,
-//    		data: "uni_id=" + data.content.UNI_ID,
-//    		dataType: "text",
-//            success: function (data, status) {
-//            	if(data.length > 0) {
-//            		 json = JSON.parse(data);
-//            		 for(var i = 0 ; i < json.length ; i++) {
-//            			review.push(json[i]);
-//            		 }
-//            	}
-//            },
-//            error: function (xhr, err) {
-//                alert("연결 실패");
-//            }
-//    	})
 
         // 2.custom over lay 제작 - 리뷰 값 3개 + 별점
     	// page custom view - 없을 경우 null 값을 가짐.
@@ -307,6 +288,40 @@ $(function () {
     	var title = document.createElement('div');
     	title.className = 'boxtitle';
     	title.innerHTML = data.content.OS_NM;
+    	
+    	// pointer 4 -> 별찍기 평균
+    	var star_num = 0;
+    	$.ajax({
+    		type : "POST" , 
+    		url : "/middle/review/review_avg.do" ,
+    		async : false ,
+    		data: "uni_id=" + data.content.UNI_ID ,
+	        success: function (data2, status) {
+                var num1 = parseFloat(data2);
+                if(num1 > 0) {
+                	star_num = num1;
+                }
+                
+	        },
+	        error: function (xhr, err) {
+	            alert("연결 실패");
+	        }
+    	})
+        var star = document.createElement("div");
+        star.id = "star";
+        for(var j = 1 ; j < 6 ; j++)
+        {
+            var in_star = document.createElement("a");
+            in_star.setAttribute("value" , j);
+
+            if( star_num >= j) {
+                in_star.className = "on";
+            }
+
+            in_star.textContent = "★";
+            star.appendChild(in_star);
+        }
+        // ========= 절취선 
 
     	var close_btn = document.createElement("button");
     	close_btn.className = 'close_btn' ;
@@ -314,6 +329,7 @@ $(function () {
     	    overlay.setMap(null);
     	}
     	wrap.appendChild(title);
+    	wrap.appendChild(star);
     	wrap.appendChild(close_btn);
     	view.appendChild(wrap);
 
@@ -362,11 +378,12 @@ $(function () {
         span5.onclick = function() {
             // 로그인이 안되있음.
             if(span5.getAttribute("isOpen") === "false") {
-                span5.setAttribute("isOpen" , "true");    // 열림 설정.
 
-                if (sessionStorage.getItem('userData') == null) {
-
+                // pointer 3
+                if (sessionStorage.getItem('user_id') == null) {
                     alert('로그인시 이용가능합니다.');
+                } 
+                else {   // userdata 존재.
                     // 실험용 textarea
                     span5.innerHTML = "<리뷰 닫기>";
                     span5.style.color = "#aaabaf";
@@ -412,39 +429,38 @@ $(function () {
                     button.style.color = "#aaabaf";
                     
                     button.addEventListener('click' , function () {
-                        // 실험용
-                        alert(textarea.value) ;
-                        alert(sessionStorage.getItem("userData"));
+                    	// user_id 업데이트
+                    	user_id = sessionStorage.getItem('user_id');
 
                         $.ajax({
                             type : "POST" ,
                             url : "/middle/review/review_insert.do" ,
-                            async : true ,
+                            async : false ,
                             data : {
-                                // userData : sessionStorage.getItem("userData")
-								// ,
                                 content : textarea.value ,
                                 uni_id : data.content.UNI_ID ,
-                                rating : rating
-                            } 
-                        }).done(function (data , textStatus ,xhr) {
-                            alert('리뷰 등록 완료');
-                            close_review(span5,view);
-                            
-                            // pointer
-                            var reviewlist = setReview(data);	// 가져오기완료
-                            var review_part = setView(reviewlist);
-                            $("#review").replaceWith(review_part);
-//                            view.appendChild(review_part);
+                                rating : rating ,
+                                user_id : user_id
+                            } ,
+                	        success: function (data, status) {
+                                alert('리뷰 등록 완료');
+                                alert(data);
+                                close_review(span5,view);
+                                
+                                // pointer
+                                var reviewlist = setReview(data);	// 가져오기완료
+                                var review_part = setView(reviewlist);
+                                $("#review").replaceWith(review_part);
+                	        },
+                	        error: function (xhr, err) {
+                	            alert("연결 실패");
+                	        }
                         })
                     })
                     textdiv.appendChild(button);
 
                     view.appendChild(textdiv);
-                } else {   // userdata 존재.
-                    var textarea = document.createElement('textarea');
-                    textarea.cols = '100px';
-                    textarea.rows = '100px';
+                    span5.setAttribute("isOpen" , "true");    // 열림 설정.
                 }
             }
             else {

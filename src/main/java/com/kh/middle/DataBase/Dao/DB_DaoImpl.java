@@ -54,10 +54,10 @@ public class DB_DaoImpl implements DB_Dao {
 	}
 
 	@Override
-	public List<Review> review_avg(String uni_id) throws Exception {
+	public float review_avg(String uni_id) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return sqlsession.selectList("sql.review_avg", uni_id);
+		return sqlsession.selectOne("sql.review_avg", uni_id);
 	}
 	
 	// Product Dao end
