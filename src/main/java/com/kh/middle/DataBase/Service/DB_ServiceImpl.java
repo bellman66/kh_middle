@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.middle.DataBase.Dao.DB_Dao;
 import com.kh.middle.bean.board.product;
 import com.kh.middle.bean.user.user_main;
+import com.kh.middle.review.vo.Review;
 
 
 // 1. Dao �� ���� ������ ������ ������ �����ϴ� ���񽺸� ����
@@ -44,7 +45,18 @@ public class DB_ServiceImpl implements DB_Service{
 		// TODO Auto-generated method stub
 		return DB_Dao.select_board_product();
 	}
+
+	@Override
+	public List<Review> select_review(String uni_id) throws Exception {
+		
+		return DB_Dao.select_review(uni_id);
+	}
+
+	@Override
+	public void insert_review(Review review) throws Exception {
+
+		DB_Dao.insert_review(review);
+	}
 	
-	// product Dao end
 	
 }

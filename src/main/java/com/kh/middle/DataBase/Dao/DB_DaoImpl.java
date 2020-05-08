@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.middle.bean.board.product;
 import com.kh.middle.bean.user.user_main;
+import com.kh.middle.review.vo.Review;
 
 @Repository("DB_Dao")
 public class DB_DaoImpl implements DB_Dao {
@@ -36,6 +37,20 @@ public class DB_DaoImpl implements DB_Dao {
 		// TODO Auto-generated method stub
 		return sqlsession.selectList("sql.select_board_product");
 		
+	}
+
+	@Override
+	public List<Review> select_review(String uni_id) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlsession.selectList("sql.select_review",uni_id);
+	}
+
+	@Override
+	public void insert_review(Review review) throws Exception {
+		
+		
+		sqlsession.insert("sql.insert_review", review);
 	}
 	
 	// Product Dao end

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="kh_middle" />
+    </artifacts-to-build>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="437aa417-930b-40e9-87b6-d8c243bc06a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kh/middle/api/Car_Api/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kh/middle/api/Car_Api/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kh/middle/controller/StellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kh/middle/controller/StellerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/mariadb/disposable_sql.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/mariadb/disposable_sql.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/steller/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/steller/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/steller/assets/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/steller/assets/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/DataBase/Dao/DB_Dao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/DataBase/Dao/DB_DaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/DataBase/Service/DB_Service.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/DataBase/Service/DB_ServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/Filter/CrossDomainFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/kakao_Api/rest_api/kakao_restapi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/Controller/Api_Controller$ApiHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/Controller/Api_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/model/SetUrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/model/aroundAll.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/model/avgAllPrice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/model/avgRecentPrice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/model/avgSidoPrice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/api/op_Api/model/avgSigunPrice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/api/opNet/aroundAll_obj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/api/opNet/avgAllPrice_obj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/api/opNet/avgRecentPrice_obj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/api/opNet/avgSidoPrice_obj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/api/opNet/avgSigunPrice_obj.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/board/product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/bean/user/user_main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/controller/BoardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/controller/CustomerServiceController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/controller/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/controller/MemberController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/controller/StellerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/memberdb/dao/MemberDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/memberdb/dao/MemberDaoInter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/memberdb/service/MemberService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/memberdb/service/MemberServiceInter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/db/dao/NoticeDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/db/dao/NoticeDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/db/service/NoticeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/db/service/NoticeServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/vo/Notice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/vo/PageDefault.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kh/middle/notice/vo/Paging.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/mariadb/disposable_sql.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.kh/middle/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.kh/middle/pom.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="1aRX8JhhZyEzr63GAoPYeVt1rG2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.29770115" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\WorkSpace\Jsp_Workspace\kh_middle\src\main\webapp\resources\image" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.tomcat 7">
+    <configuration name="CarController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kh.middle.api.Car_Api.CarController" />
+      <module name="kh_middle" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kh.middle.api.Car_Api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in kh_middle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kh_middle" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tomcat 7" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.99" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="kh_middle:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/middle" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_kh_middle_5" />
+        <option name="DEPLOY_TOMCAT_APPS" value="true" />
+        <option name="HTTP_PORT" value="7070" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="63715" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="kh_middle:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.CarController" />
+      <item itemvalue="JUnit.All in kh_middle" />
+      <item itemvalue="Tomcat Server.tomcat 7" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CarController" />
+        <item itemvalue="JUnit.All in kh_middle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="437aa417-930b-40e9-87b6-d8c243bc06a3" name="Default Changelist" comment="" />
+      <created>1586699218425</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586699218425</updated>
+      <workItem from="1586699224402" duration="114000" />
+      <workItem from="1586699352953" duration="299000" />
+      <workItem from="1586699722347" duration="1073000" />
+      <workItem from="1587440726663" duration="362000" />
+      <workItem from="1587441548252" duration="76000" />
+      <workItem from="1587479900279" duration="3631000" />
+      <workItem from="1587483637390" duration="7669000" />
+      <workItem from="1587537201251" duration="708000" />
+      <workItem from="1587801110688" duration="3954000" />
+      <workItem from="1587950449578" duration="10208000" />
+      <workItem from="1587969607568" duration="268000" />
+      <workItem from="1587969896522" duration="2251000" />
+      <workItem from="1588056885881" duration="16471000" />
+      <workItem from="1588142375447" duration="3696000" />
+      <workItem from="1588511468567" duration="4082000" />
+      <workItem from="1588574235379" duration="7050000" />
+      <workItem from="1588581318036" duration="5102000" />
+      <workItem from="1588588802308" duration="5231000" />
+      <workItem from="1588662618244" duration="5879000" />
+      <workItem from="1588669119533" duration="2553000" />
+      <workItem from="1588687865662" duration="6064000" />
+      <workItem from="1588738877605" duration="2237000" />
+      <workItem from="1588747948239" duration="797000" />
+      <workItem from="1588748767176" duration="30000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="751" y="99" key="#Inspections" timestamp="1587801977561">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="751" y="99" key="#Inspections/0.0.1536.834@0.0.1536.834" timestamp="1587801977561" />
+    <state x="361" y="76" key="#Intentions" timestamp="1588668812775">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="76" key="#Intentions/0.0.1536.834@0.0.1536.834" timestamp="1588668812775" />
+    <state x="617" y="139" key="#Menus_and_Toolbars" timestamp="1586699839675">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="617" y="139" key="#Menus_and_Toolbars/0.0.1536.834@0.0.1536.834" timestamp="1586699839675" />
+    <state x="271" y="0" key="#Project_Structure" timestamp="1588748786102">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="271" y="0" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1588748786102" />
+    <state x="314" y="97" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588748742085">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="314" y="97" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1588748742085" />
+    <state x="824" y="136" key="#com.intellij.ide.util.MemberChooser" timestamp="1588667271351">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="824" y="136" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1588667271351" />
+    <state x="260" y="141" width="1167" height="693" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1587481225036">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="260" y="141" width="1167" height="693" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.834@0.0.1536.834" timestamp="1587481225036" />
+    <state x="0" y="0" width="816" height="834" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1586700285802">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="0" y="0" width="816" height="834" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1536.834@0.0.1536.834" timestamp="1586700285802" />
+    <state x="874" y="113" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1586699570442">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="874" y="113" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1536.834@0.0.1536.834" timestamp="1586699570442" />
+    <state x="821" y="30" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1587479977249">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="821" y="30" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1536.834@0.0.1536.834" timestamp="1587479977249" />
+    <state x="452" y="299" key="DetectedRootsChooserDialog" timestamp="1588748664938">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="452" y="299" key="DetectedRootsChooserDialog/0.0.1536.834@0.0.1536.834" timestamp="1588748664938" />
+    <state x="772" y="159" key="FileChooserDialogImpl" timestamp="1588748663905">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="772" y="159" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1588748663905" />
+    <state x="901" y="321" width="361" height="312" key="Github.ShareDialog" timestamp="1587969777468">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="901" y="321" width="361" height="312" key="Github.ShareDialog/0.0.1536.834@0.0.1536.834" timestamp="1587969777468" />
+    <state width="980" height="698" key="GridCell.Tab.0.bottom" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.0.center" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.0.left" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.0.right" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.1.bottom" timestamp="1588748493127">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1588748493127" />
+    <state width="980" height="698" key="GridCell.Tab.1.center" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.1.left" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.1.right" timestamp="1588748493126">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1588748493126" />
+    <state width="980" height="698" key="GridCell.Tab.2.bottom" timestamp="1588748493127">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.2.bottom/0.0.1536.834@0.0.1536.834" timestamp="1588748493127" />
+    <state width="980" height="698" key="GridCell.Tab.2.center" timestamp="1588748493127">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.2.center/0.0.1536.834@0.0.1536.834" timestamp="1588748493127" />
+    <state width="980" height="698" key="GridCell.Tab.2.left" timestamp="1588748493127">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.2.left/0.0.1536.834@0.0.1536.834" timestamp="1588748493127" />
+    <state width="980" height="698" key="GridCell.Tab.2.right" timestamp="1588748493127">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="980" height="698" key="GridCell.Tab.2.right/0.0.1536.834@0.0.1536.834" timestamp="1588748493127" />
+    <state x="658" y="156" key="IDE.errors.dialog" timestamp="1586700645256">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="658" y="156" key="IDE.errors.dialog/0.0.1536.834@0.0.1536.834" timestamp="1586700645256" />
+    <state x="308" y="48" width="736" height="754" key="NewModule_or_Project.wizard" timestamp="1588748658236">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="308" y="48" width="736" height="754" key="NewModule_or_Project.wizard/0.0.1536.834@0.0.1536.834" timestamp="1588748658236" />
+    <state x="128" y="0" key="SettingsEditor" timestamp="1588748711815">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="128" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1588748711815" />
+    <state x="382" y="310" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1588748556812">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="382" y="310" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.834@0.0.1536.834" timestamp="1588748556812" />
+    <state x="596" y="65" key="com.intellij.javaee.view.ServerArtifactsDialog" timestamp="1586700387963">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="596" y="65" key="com.intellij.javaee.view.ServerArtifactsDialog/0.0.1536.834@0.0.1536.834" timestamp="1586700387963" />
+    <state x="570" y="327" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587969808674">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="570" y="327" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1587969808674" />
+    <state x="688" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1588667246438">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="688" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1588667246438" />
+    <state x="636" y="15" key="spring file set editor" timestamp="1587537335680">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="636" y="15" key="spring file set editor/0.0.1536.834@0.0.1536.834" timestamp="1587537335680" />
+  </component>
+</project>

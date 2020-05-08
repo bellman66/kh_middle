@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+	<mapper namespace = "customer">
+	
+	<!-- 페이지 적용 -->
+	<select id="pageList" resultType="hashmap" parameterType="hashmap">
+  	<![CDATA[
+      SELECT s.s_no, s.s_title, s.s_content, date_format(s.s_regDate, '%Y-%m-%d') as date, s.s_viewCnt, s.s_writer
+      FROM s_board_semi as s
+      INNER join member_semi as m
+    	ON (s.s_writer = m.nick_name)
+   	    ORDER BY num DESC
+   	    LIMIT #{pageStart}, #{perPageNum}
+  	]]>
+	</select>
+
+	<!-- 총 게시글 수 -->
+	<select id="countBoardList" resultType="Integer">
+ 	 <![CDATA[
+      	SELECT count(*)
+     	 FROM s_board_semi
+  	]]>
+	</select>
+	
+	<!-- 게시물 목록 데이터 불러오기 -->
+    <select id="writingList" resultType="com.kh.middle.bean.customer.Customer">
+            select * from s_board_semi order by s_no desc
+    </select>
+    
+    <!-- Create 부분에 해당하는 글 쓰기 쿼리 -->
+    <!-- mysql은 ifnull명령어로 해야함(1,0) null이면 0적용 null이 아니면 1적용 -->
+    <!-- mysql insert가 안될시에는 데이블명 다음에 별칭(as + 별칭명)을 붙여준다. -->
+    
+    <insert id="boardWriter">
+        insert into s_board_semi (s_no, s_title, s_content, s_writer )
+        values ((select ifnull(max(s_no)+1,1) from s_board_semi as s), #{s_title}, #{s_content}, #{s_writer})
+    </insert>
+    
+    <!--  게시글 상세내용 불러오기  -->
+    <select id="boardRead" resultType="com.kh.middle.bean.customer.Customer">
+        select s_no,s_title,s_content,s_writer,s_regDate,s_viewCnt
+        from s_board_semi where s_no = #{s_no}
+    </select>
+    
+    <!--  게시글 수정하기  -->
+    <update id="boardUpdate">
+        update s_board_semi set s_title=#{s_title},s_content=#{s_content} 
+        where s_no=#{s_no}
+    </update>
+    
+    <!--  게시글 조회수 증가  -->
+    <update id="updateCount" parameterType="int">
+		update s_board_semi set s_viewCnt = s_viewCnt + 1 where s_no = #{s_no}
+	</update>
+    
+    <!-- 게시글 삭제 -->
+    <delete id="boardDelete">
+        delete from s_board_semi where s_no = #{s_no}
+    </delete>
+    
+    	<!-- 검색 대한 게시글 수 -->
+	<select id="countArticle" resultType="int">
+		SELECT count(*)
+		FROM s_board_semi  as s
+		INNER JOIN member_semi as u
+		ON (s.s_writer = m.nick_name)
+		<include refid="search" />
+	</select>
+
+	<!-- 검색 -->
+	<select id="searchList" resultType="com.kh.middle.bean.customer.Customer">
+		SELECT s.s_no, s.s_title, s.s_content, date_format(s.s_regDate, '%Y-%m-%d') as date, s.s_viewCnt, s.s_writer
+		FROM s_board_semi as s
+		INNER JOIN member_semi as m
+		ON (s.s_writer = m.nick_name)
+		<include refid="search" />
+		ORDER BY num DESC
+		LIMIT #{pageStart}, #{perPageNum}
+	</select>
+
+	<!-- MyBatis 동적 sql -->
+	<sql id="search">
+		<choose>
+			<when test="searchType == 'all'">
+				AND (m.nick_name LIKE CONCAT('%', #{keyword}, '%')
+				OR s.s_content LIKE CONCAT('%', #{keyword}, '%')
+				OR s.s_title LIKE CONCAT('%', #{keyword}, '%'))
+			</when>
+			<when test="searchType == 'writer'">
+				AND m.nick_name LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchType == 'content'">
+				AND s.s_content LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchType == 'title'">
+				AND s.s_title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</sql>
+    
+    
+</mapper>
