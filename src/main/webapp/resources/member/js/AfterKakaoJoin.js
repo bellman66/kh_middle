@@ -11,7 +11,7 @@ function validate(){
 
 	function nickNameCheck(){
 		
-		$.ajax({
+		$.ajax({ 
 		
 			url:"/middle/member/nicknamecheck.do",
 			type:"get",

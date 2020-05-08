@@ -32,7 +32,7 @@ public class MemberService implements MemberServiceInter{
 		
 		return memberDao.kakao_id_check(m);
 	}
-	@Override
+	@Override 
 	public void kakaoJoin(Member m) throws Exception {
 		memberDao.kakaoJoin(m);
 	}

@@ -34,7 +34,7 @@ public class MemberDao implements MemberDaoInter{
 		return sqlSession.selectOne("kakao_id_check",m);
 		
 	}
-	@Override
+	@Override 
 	public void kakaoJoin(Member m) throws Exception {
 		sqlSession.insert("kakao_join", m);
 	}

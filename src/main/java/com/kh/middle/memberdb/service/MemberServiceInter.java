@@ -12,7 +12,7 @@ public interface MemberServiceInter {
 	Object selectNickname(String nickname)throws Exception;
 	void withdraw(String user_id)throws Exception;
 	void updateKakaoLeaveYn(String user_id) throws Exception;
-	
+	 
 	 
 
 }

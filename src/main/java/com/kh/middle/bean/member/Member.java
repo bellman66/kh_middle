@@ -11,7 +11,7 @@ public class Member {
 	private String nick_name;
 ;
 	
-	public Member() {}
+	public Member() {} 
 
 	public Member(String user_id, String user_pw, String kind_oil, 
 			String leave_yn,String grade, String m_code,String nick_name
