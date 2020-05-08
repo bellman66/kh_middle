@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
 <link href="${pageContext.request.contextPath}/resources/css/board/detail.css"
@@ -18,13 +18,15 @@
 
 			<!-- Header -->
 			<header id="header">
-				<h1>게시글</h1><br>
+				<h1>게시글</h1>
 			</header>
 
 				<!-- Main -->
 				<div id="main">
 				
 				<section id="content" class="main">
+				<button style="float:right;" onclick="history.back();">뒤로가기</button>
+				<br>
 			<div class="title">
 				<span id="h3">제목 : ${detail.notice_title }</span>
 				<span id="notice_count">조회 ${detail.notice_count }</span>
@@ -73,7 +75,8 @@
 		<form action="<%= request.getContextPath()%>/board/comment.do" method="post" id="write_comment_form">
 			<h4>댓글작성</h4>
 			<input id="comment_txt" style="width:80%;" maxlength="30" placeholder="댓글을 입력해 주세요" type="text" name="comment_content" />
-			<button onclick="if(${sessionScope.userData == null}){alert('로그인하세요');return false;}" class="button small" id="comment_submit_btn" type="submit">등록</button>
+			<button class="button small"  onclick="if(${sessionScope.userData == null}){alert('로그인하세요');return false;}"
+			 id="comment_submit_btn" type="submit">등록</button>
 			<input type="hidden" name="notice_num" value="${detail.notice_num }" />
 		</form>
 		<br><br>
@@ -96,7 +99,7 @@
 					<input type="hidden" name="noticeNum" value="${cmt.notice_num }"/>
 					<input id="complete${cmt.comment_num }" class="button small" type="hidden" value="작성완료" />
 					<input class="button small" id="modifybtn${cmt.comment_num }" type="button" onclick="modify(this);" value="수정" />
-					<input style="width:70%;" id="modifytxt${cmt.comment_num }" type="hidden" name="comment_content" />
+					<input style="width:60%;" id="modifytxt${cmt.comment_num }" type="hidden" name="comment_content" />
 				</form>
 				</c:if>
 				<p class="clear"></p>

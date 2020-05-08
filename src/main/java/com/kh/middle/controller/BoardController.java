@@ -46,8 +46,7 @@ public class BoardController extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(StellerController.class);
     @Resource(name = "NoticeService")
     NoticeService noticeService;
-   
-    
+     
     /**
      * 1.MethodName : Board_indexView
        2.ClassName : BoardController.java
@@ -93,6 +92,7 @@ public class BoardController extends HttpServlet {
     public ModelAndView Board_upload(ModelAndView mv, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         String uploadFolder = "resources/upload";
+        //UploadFile객체에 FileUtil클래스 fileUpload메소드 실행 결과 담음
         UploadFile file = new FileUtil().fileUpload(uploadFolder, request);
         Notice notice = null;
         
@@ -105,9 +105,11 @@ public class BoardController extends HttpServlet {
             notice.setOriginal_filepath(file.getOriginFileName());
             notice.setRename_filepath(file.getRenameFileName());
             
+            //세션에 담긴 nickName 담음
             notice.setNotice_id(m.getNick_name());
-            
+            //insert
             noticeService.insert_notice(notice);
+            
             request.setAttribute("notice", notice);
             request.setAttribute("isSuccess", true);
             mv.setViewName("redirect:/board/index.do?pageNum=1");
@@ -231,6 +233,7 @@ public class BoardController extends HttpServlet {
         Notice notice = new Notice();
         notice.setNotice_num(noticeNum);
         if(uploadFile.isSuccess()) {
+        	//공통 수정 항목
             notice.setNotice_title(modify_title);
             notice.setNotice_content(modify_content);
             if(state.equals("historyYes") && stateDetail.equals("noUpload")) {
@@ -245,7 +248,7 @@ public class BoardController extends HttpServlet {
                         + "/" + uploadFile.getmRequest().getParameter("rename_filepath");
                 origin_file = new File(filePath);
                 origin_file.delete();
-                
+                //업로드 처리
                 notice.setOriginal_filepath(uploadFile.getOriginFileName());
                 notice.setRename_filepath(uploadFile.getRenameFileName());
             }else if(state.equals("historyNo") && stateDetail.equals("yesUpload")) {

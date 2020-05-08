@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-	<head>
+	<head> 
 		<title>게시판</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -12,19 +12,18 @@
 		.pagination { 
 	 	  display: inline-block;
 		  transform:translateX(29%);
-		}
+		} 
  		
 		.pagination a {
 		  color: black;
 		  float: left;
 		  padding: 8px 16px;
-		  text-decoration: none;
 		}
 		
-		.pagination a.active {
-		  background-color: #4CAF50;
-		  color: white;
+		.title{
+			width:40%;
 		}
+		
 		</style>
 	</head>
 	
@@ -120,8 +119,8 @@
 			</div>
 			<!-- ============================================= -->
 
+			</section>
+			</div>
 		</div>
-		</section>
-
 	</body>
 </html>
