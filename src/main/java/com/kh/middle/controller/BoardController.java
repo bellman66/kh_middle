@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.kh.middle.bean.member.Member;
 import com.kh.middle.notice.common.util.FileUtil;
 import com.kh.middle.notice.common.vo.UploadFile;
 import com.kh.middle.notice.db.service.NoticeService;
@@ -35,7 +37,7 @@ import com.kh.middle.notice.vo.Comment;
 import com.kh.middle.notice.vo.Notice;
 import com.kh.middle.notice.vo.PageDefault;
 import com.kh.middle.notice.vo.Paging;
- 
+   
 @Controller
 @RequestMapping("/board")
 @Transactional(rollbackFor = { Exception.class })
@@ -44,7 +46,7 @@ public class BoardController extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(StellerController.class);
     @Resource(name = "NoticeService")
     NoticeService noticeService;
-  
+   
     
     /**
      * 1.MethodName : Board_indexView
@@ -93,12 +95,18 @@ public class BoardController extends HttpServlet {
         String uploadFolder = "resources/upload";
         UploadFile file = new FileUtil().fileUpload(uploadFolder, request);
         Notice notice = null;
+        
+        Member m = (Member) request.getSession().getAttribute("userData");
+        
         if (file.isSuccess()) {
             notice = new Notice();
             notice.setNotice_title(file.getmRequest().getParameter("notice_title"));
             notice.setNotice_content(file.getmRequest().getParameter("notice_content"));
             notice.setOriginal_filepath(file.getOriginFileName());
             notice.setRename_filepath(file.getRenameFileName());
+            
+            notice.setNotice_id(m.getNick_name());
+            
             noticeService.insert_notice(notice);
             request.setAttribute("notice", notice);
             request.setAttribute("isSuccess", true);
@@ -259,9 +267,9 @@ public class BoardController extends HttpServlet {
        5.작성일 : 2020. 5. 3.
      */
     @RequestMapping("recommend.do")
-    public void Board_recommed(@RequestParam("noticeNum") Integer intNoticeNum ,ModelAndView mv, HttpServletRequest request, HttpServletResponse response)
+    public void Board_recommed(@RequestParam("noticeNum") Integer intNoticeNum, 
+    		@RequestParam("noticeNum") String stringNoticeNum ,ModelAndView mv, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        String stringNoticeNum = request.getParameter("noticeNum");
         int result = 0;
         // -------------------------------------
         boolean flg = false;
@@ -301,10 +309,10 @@ public class BoardController extends HttpServlet {
             throws Exception {
         String noticeNum = request.getParameter("notice_num");
         Comment comment = new Comment();
+        Member m = (Member) request.getSession().getAttribute("userData");
         comment.setNotice_num(Integer.parseInt(noticeNum));
         comment.setComment_content(request.getParameter("comment_content"));
-//      세션에서 아이디 받아와서 바꿔줄예정 comment.setComment_id(request.getSession().getAttribute("member"));
-        comment.setComment_id("김지수");
+        comment.setComment_id(m.getNick_name());
         noticeService.insert_notice_comment(comment);
         mv.setViewName("redirect:/board/detail.do?noticeNum=" + noticeNum);
         return mv;

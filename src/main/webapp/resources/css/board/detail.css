@@ -4,11 +4,11 @@
 			border: 1px solid gray;
 			width: 70%;
 			height: auto;
-			margin: auto;
+	 		margin: auto;
 			top: 50%;
 			left: 50%;
-	}
-	
+	} 
+	 
 	a {
 		text-decoration: none;
 		color:black;
@@ -62,20 +62,26 @@
 	}
 	
 	.allDiv{
-		margin-bottom:1%;
+		height:30px;		
 	}
 	
 	.contentDiv{
-		border:1px solid gray;
+		border:1px solid lightgray;
 		height:250px;
 		width:100%;
 		margin-bottom:1.5%;
 		padding:1%1%1%1.5%;
 	}
 	
-	[id^=modifytxt], [id^=comment_txt]{
+	[id^=modifytxt]{
 		width:75%;
 		font-size:1.2vw;
+	}
+	
+	[id^=comment_txt]{
+		width:75%;
+		font-size:1.2vw;
+		float:left;
 	}
 	
 	#comment_submit_btn{
@@ -100,7 +106,7 @@
 	.title{
 		margin-top:4%;
 		width:100%;
-		height:28px;	
+		height:34px;	
 	}
 	
 	.title2{

@@ -1,14 +1,14 @@
 @charset "UTF-8";
 	
 	form {
-		height: 100%;
-		width: 100%;
-	}
-	
+		height: auto;
+		width: auto;
+	} 
+	 
 	.wrapper {
 		border: 1px solid gray;
 		width: 70%;
-		height: 110%;
+	 	height: 110%;
 		margin: auto;
 		top: 50%;
 		left: 50%;
@@ -68,3 +68,8 @@
 		text-align:center;
 		float:left;
 	 }
+	 
+	 #modifyFile{
+	 	float:left;
+	 }
+	 
