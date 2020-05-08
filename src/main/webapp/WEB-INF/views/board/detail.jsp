@@ -18,15 +18,24 @@
 
 			<!-- Header -->
 			<header id="header">
-				<h1>게시글</h1>
+			<span class="logo"><img
+				src="${pageContext.request.contextPath}/resources/steller/images/logo.svg"
+				alt="" /></span>
+			<h1>나만의 주유소</h1>
 			</header>
+			
+			<nav id="nav">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/steller/index.do">홈화면</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/index.do?pageNum=1">자유게시판</a></li>
+				<li><a href="${pageContext.request.contextPath}/customer/s_board.do">고객게시판</a></li>
+			</ul>
+		</nav>
 
 				<!-- Main -->
 				<div id="main">
 				
 				<section id="content" class="main">
-				<button style="float:right;" onclick="history.back();">뒤로가기</button>
-				<br>
 			<div class="title">
 				<span id="h3">제목 : ${detail.notice_title }</span>
 				<span id="notice_count">조회 ${detail.notice_count }</span>
@@ -36,11 +45,13 @@
 			
 			<div class="title2">
 			<c:if test="${detail.rename_filepath ne '' }">
+			<form action="<%=request.getContextPath() %>/board/download.do" method="post">
 				<span id="file">첨부파일 : 
-					<a href="<%=request.getContextPath() %>/board/download.do?ofname=${detail.original_filepath }
-						&rfname=${detail.rename_filepath}">
-						${detail.original_filepath }</a> 
+				<input type="hidden" name="ofname" value="${detail.original_filepath }">
+				<input type="hidden" name="rfname" value="${detail.rename_filepath}">
+						<button type="submit">${detail.original_filepath }</button>
 				</span>
+			</form>
 			</c:if>
 			<span id="id">작성자 : ${detail.notice_id }</span>
 			</div> 
@@ -49,7 +60,7 @@
 		<div class="contentDiv" id="contentDiv">${detail.notice_content }</div>
 		
 		
-		<form id="recommend_form" action="<%= request.getContextPath()%>/board/recommend.do">
+		<form id="recommend_form" action="<%= request.getContextPath()%>/board/recommend.do"  method="post">
 			<button value="${detail.notice_recommend }" name="recommend" id="recommend" type="button">
 				추천수  <br> ${detail.notice_recommend}
 			</button>
@@ -57,7 +68,7 @@
 		</form>
 		
 		<c:if test="${detail.notice_id eq sessionScope.userData.nick_name}">
-		<form action="<%= request.getContextPath()%>/board/modifynotice.do" />
+		<form action="<%= request.getContextPath()%>/board/modifynotice.do" method="post"/>
 				<input type="hidden" name="noticeNum" value="${detail.notice_num}"/>
 				<input type="hidden" name="rename_filepath" value="${detail.rename_filepath}"/>
 				<input type="hidden" name="original_filepath" value="${detail.original_filepath}"/>
@@ -65,7 +76,7 @@
 				<input type="hidden" name="notice_title" value="${detail.notice_title}"/>
 				<button class="button small" id="modify" type="submit">수정하기</button>
 		</form>
-		<form action="<%= request.getContextPath()%>/board/noticedelete.do">
+		<form action="<%= request.getContextPath()%>/board/noticedelete.do" method="post">
 			<input id="noticeNum" name="noticeNum" type="hidden" value="${detail.notice_num }"/>
 			<input type="hidden" name="rename_filepath" value="${detail.rename_filepath}"/>
 			<button class="button small" id="delete" type="submit" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제하기</button>
@@ -89,12 +100,12 @@
 				<span id="comment_content${cmt.comment_num }">${cmt.comment_content }</span>
 			
 				<c:if test="${cmt.comment_id eq sessionScope.userData.nick_name }">
-				<form action="<%=request.getContextPath()%>/board/commentdelete.do">
+				<form action="<%=request.getContextPath()%>/board/commentdelete.do"  method="post">
 					<input type="hidden" name="comment_num" value="${cmt.comment_num }"/>
 					<input type="hidden" name="noticeNum" value="${cmt.notice_num }"/>
 					<button class="button small" id="deletebtn${cmt.comment_num }" onclick="if(!confirm('삭제하시겠습니까?')){return false;}" type="submit">삭제</button>
 				</form>
-				<form action="<%=request.getContextPath()%>/board/commentmodify.do">
+				<form action="<%=request.getContextPath()%>/board/commentmodify.do"  method="post">
 					<input id="comment_num" type="hidden" name="comment_num" value="${cmt.comment_num }"/>
 					<input type="hidden" name="noticeNum" value="${cmt.notice_num }"/>
 					<input id="complete${cmt.comment_num }" class="button small" type="hidden" value="작성완료" />
@@ -108,7 +119,7 @@
 		</c:if>
 		</div>
 		
-		<form action="<%=request.getContextPath()%>/board/search.do">
+		<form action="<%=request.getContextPath()%>/board/search.do"  method="post">
 		<input type="hidden" id="search" name="search" />
 		<button class="button small" id="searchBtn" style="display:none" type="submit">검색</button>
 		</form>

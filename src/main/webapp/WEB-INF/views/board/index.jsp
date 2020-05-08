@@ -26,15 +26,25 @@
 		
 		</style>
 	</head>
-	
-	<body class="is-preload">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 			<!-- Header -->
 			<header id="header">
+			<span class="logo"><img
+				src="${pageContext.request.contextPath}/resources/steller/images/logo.svg"
+				alt="" /></span>
+			<h1>나만의 주유소</h1>
 			</header>
+			
+			<nav id="nav">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/steller/index.do">홈화면</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/index.do?pageNum=1">자유게시판</a></li>
+				<li><a href="${pageContext.request.contextPath}/customer/s_board.do">고객게시판</a></li>
+			</ul>
+		</nav>
 					
 				<!-- Main -->
 				<div id="main">

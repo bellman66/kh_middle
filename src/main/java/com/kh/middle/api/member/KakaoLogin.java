@@ -10,11 +10,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class KakaoLogin {
-
+ 
 	private final String RESTKEY = "c618b7fc9b808f184bdafc0406409848";
 	private String redirectURL;
 	
-	public KakaoLogin() {}
+	public KakaoLogin() {} 
 	
 	public String getUserCode(String userCode,int flag) throws IOException {
 		String responseBody = "";
@@ -84,7 +84,6 @@ public class KakaoLogin {
 		} else {
 			responseBody = readBody(con.getErrorStream());
 		}
-		System.out.println("dao : "+responseBody);
 		return responseBody;
 	}
 	

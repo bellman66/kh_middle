@@ -33,17 +33,25 @@ public class MemberDao implements MemberDaoInter{
 		
 		return sqlSession.selectOne("kakao_id_check",m);
 		
-	}
-	@Override
+	} 
+	@Override 
 	public void kakaoJoin(Member m) throws Exception {
 		sqlSession.insert("kakao_join", m);
 	}
 	@Override
 	public String selectNickname(String nickname) {
-		System.out.println("before : "+nickname);
-		String s = sqlSession.selectOne("nick_name_select", nickname);
-		System.out.println("nickname : "+s);
-		return s;
+		System.out.println("nick : "+nickname);
+		return sqlSession.selectOne("nick_name_select", nickname);
+	}
+	@Override
+	public void withdraw(String user_id) {
+	
+		sqlSession.update("member_withdraw", user_id);
+		
+	}
+	@Override
+	public void updateKakaoLeaveYn(String user_id) {
+		sqlSession.update("update_kakao_leave_yn", user_id);
 	}
 
 }

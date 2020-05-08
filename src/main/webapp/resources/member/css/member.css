@@ -11,8 +11,8 @@
 .buttonWrapper button{
 	font-size:90%;
 	
-	transform:translateX(-15%);
-}
+	transform:translateX(-15%);  
+} 
 
 a{
 	text-decoration: none !important;
@@ -46,19 +46,19 @@ a{
 
 
 /* member MyPage 시작 */
+.memberTable{
+	
+	witdh:50% !important;
+}
+
 .myPageWrapper{
 	text-align:center;
 	
 }
 .mypageMemberWrapper{
-	margin-right:10%;
-	height:200%;
-}
-.myPageWrapper div{
-	
-	
-    border-bottom: 1px solid #e8e9ed;
+	line-height:200%;
 	font-size:1.5vw;
+	height:200%;
 }
 
 .loginMsg{
@@ -68,11 +68,14 @@ a{
 	font-size:2vw;
 }
 
-
-
-.t{
-	margin-right:40%;	
+.goIndex{
+	
+	color:white;
+	
 }
+.memberTable span{
+	color:white !important;
+	}
 
 /* memberJoin시작 */
 
@@ -132,6 +135,9 @@ a{
 .afterKakaoJoin button{
 	border-radius: 5px; 
 	font-size:80%;
+
+
 }
+
 
 

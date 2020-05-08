@@ -32,13 +32,23 @@ public class MemberService implements MemberServiceInter{
 		
 		return memberDao.kakao_id_check(m);
 	}
-	@Override
+	@Override 
 	public void kakaoJoin(Member m) throws Exception {
-		memberDao.kakaoJoin(m);
+		memberDao.kakaoJoin(m); 
 	}
 	@Override
 	public String selectNickname(String nickname) {
 		return memberDao.selectNickname(nickname);
+	}
+	@Override
+	public void withdraw(String user_id) {
+		memberDao.withdraw(user_id);
+		
+	}
+	@Override
+	public void updateKakaoLeaveYn(String user_id) {
+		memberDao.updateKakaoLeaveYn(user_id);
+		
 	}
 
 }

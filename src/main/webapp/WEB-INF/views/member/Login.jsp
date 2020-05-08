@@ -13,8 +13,8 @@
 
 <link href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" rel="stylesheet"/>
 <link href="${pageContext.request.contextPath}/resources/steller/assets/css/map.css" rel="stylesheet"/>
-
-
+ 
+ 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/member/css/member.css"/>
@@ -22,7 +22,7 @@
 </head>
 <body>   
 <div class="memberLoginWrapper">
-	<h1 class="loginMsg" style="text-decoration:none"><a href="<%=request.getContextPath()%>/member/index.do" >나만의 주유소</a></h1>
+	<h1 class="loginMsg" style="text-decoration:none !important;"><a href="<%=request.getContextPath()%>/member/index.do" >나만의 주유소</a></h1>
 	<div class="loginImple">
 		<form action="<%=request.getContextPath() %>/member/memberlogin.do" method="post">
 				<strong style="font-size:120%;">ID</strong>

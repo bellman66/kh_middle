@@ -268,25 +268,7 @@
     <header id="header" class="alt">
         <span class="logo"><img src="${pageContext.request.contextPath}/resources/steller/images/logo.svg"
                                 alt=""/></span>
-        <h1> 나만의 주유소</h1>
-
-        <div>
-            <a class="login_form" href="login"> login </a>
-        </div>
-    </header>
-
-    <!-- Nav -->
-    <nav id="nav">
-        <ul>
-            <li><a href="#intro" class="active"> 오늘자 가격 </a></li>
-            <li><a href="#first"> Oil Finder </a></li>
-            <li><a href="#second">개발 페이지</a></li>
-            <li><a href="#cta">Get Started</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main -->
-    <div id="main">
+        <h1> 나만의 주유소<div id="main">
 
         <!-- Introduction -->
         <section id="intro" class="main">
@@ -318,8 +300,7 @@
 					</table>
 				
                 </div>
-                <span class="image"><img src="${pageContext.request.contextPath}/resources/steller/images/fuel.png"
-                                         alt=""/></span>
+                <span class="image"><img src="${pageContext.request.contextPath}/resources/steller/images/fuel.png" alt=""></span>
             </div>
         </section>
 
@@ -388,7 +369,25 @@
                 </ul> 
             </footer> 
         </section>  -->
-    </div>
+    </div></h1>
+
+        <div>
+            <a class="login_form" href="login"> login </a>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#intro" class="active"> 오늘자 가격 </a></li>
+            <li><a href="#first"> Oil Finder </a></li>
+            <li><a href="${pageContext.request.contextPath}/board/index.do?pageNum=1">자유게시판</a></li>
+			<li><a href="${pageContext.request.contextPath}/customer/s_board.do">고객게시판</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    
 
     <!-- Footer -->
      <footer id="footer">

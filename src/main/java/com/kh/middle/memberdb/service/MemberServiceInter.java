@@ -10,7 +10,9 @@ public interface MemberServiceInter {
 	public Member kakao_id_check(Member m) throws Exception;
 	public void kakaoJoin(Member m) throws Exception;
 	Object selectNickname(String nickname)throws Exception;
-	
+	void withdraw(String user_id)throws Exception;
+	void updateKakaoLeaveYn(String user_id) throws Exception;
+	   
 	 
 
 }

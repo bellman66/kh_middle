@@ -92,8 +92,8 @@
 	
 	<insert id="join_imple" useGeneratedKeys="true" keyProperty="user_id">
 
-		insert into member_semi(user_id,user_pw,kind_oil,email,user_tell,nick_name)
-		values(#{user_id},#{user_pw},#{kind_oil},#{email},#{user_tell},#{nick_name})	
+		insert into member_semi(user_id,user_pw,kind_oil,nick_name)
+		values(#{user_id},#{user_pw},#{kind_oil},#{nick_name})	
 	
 	</insert>
 	

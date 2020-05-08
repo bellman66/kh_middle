@@ -28,9 +28,11 @@
 	<form action="<%=request.getContextPath() %>/member/kakaojoin.do" 
 	method="post" onsubmit="return validate()">
 	
-	<input type="hidden" name ="userId" value="${userData.user_id }"/>
+	
+	<strong>최초 사용자는 추가 입력 사항이 필요합니다. 하단 입력사항을 기재해주세요 .</strong><br><br>
+	  
+	<input type="hidden" id="user_id" name ="userId" value="${userData.user_id }"/>
 	<c:if test="${nickNameFlag eq 'false'}">
-		<strong>최초 사용자는 추가 입력 사항이 필요합니다. 하단 입력사항을 기재해주세요 .</strong><br><br>
 		<strong>닉네임</strong>
 			<input type="text" id="nickName" name="checkNick"style="width:230px"/>
 			<button type="button" onclick="nickNameCheck()">중복체크</button>

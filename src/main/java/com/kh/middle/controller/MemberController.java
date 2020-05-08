@@ -64,7 +64,7 @@ public class MemberController {
 	 * @throws Exception
 	 * 
 	 */
-	@RequestMapping("memberlogin.do")
+	@RequestMapping("memberlogin.do")//
 	public ModelAndView memberLogin(ModelAndView mav, HttpServletRequest request,HttpServletResponse response) throws Exception {
 		Member m = new Member();
 
@@ -76,7 +76,11 @@ public class MemberController {
 		if (mem != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userData", mem);
-			mav.setViewName("redirect:/steller/index.do");	// redirect 요청 으로 바꿔준다.
+
+			mav.setViewName("redirect:/steller/index.do");
+			// 넘어간 페이지에서 후속작업을 해야할 경우(ex ajax호출 등) forword방식이 아니라
+			// redirect 방식을 사용해야 함 
+
 		} else {
 			mav.addObject("isSuccess", "false");
 			mav.setViewName("member/Login");
@@ -93,6 +97,7 @@ public class MemberController {
 		5.작성일 : 2020. 4. 29. 
 	
 	 */
+	//
 	@RequestMapping("memberjoin.do")
 	public ModelAndView joinPage(ModelAndView mav) {
 
@@ -122,10 +127,7 @@ public class MemberController {
 		Member res = memberService.joinImple(m);
 		
 		if(res != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("isSucccess", "true");
-			session.setAttribute("userData", res);
-			mav.setViewName("member/index");
+			mav.setViewName("redirect:/member/memberloginpage.do");
 			
 		} else {
 			mav.addObject("isSuccess", "false");
@@ -145,20 +147,20 @@ public class MemberController {
 	@RequestMapping("logindo.do")
 	public ModelAndView logindo(ModelAndView mav,HttpServletRequest request) {
 		
-		mav.setViewName("member/logindo");
+		mav.setViewName("member/login");
 		return mav;
 	}
 	
-	@RequestMapping("nicknamecheck.do")
+	@RequestMapping("nicknamecheck.do")//
 	public void nickNameCheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
 		System.out.println("nicknameCheck");
+
 		String check = memberService.selectNickname(request.getParameter("checkNick"));
-	
-		PrintWriter pw = response.getWriter();
 		System.out.println(check);
+		PrintWriter pw = response.getWriter();
 		if(check == null) {
 			
 			pw.write("true");
@@ -203,7 +205,7 @@ public class MemberController {
 	
 	 */
 	@ResponseBody
-	@RequestMapping("reflagjimg.do")
+	@RequestMapping("reflagjimg.do")//
 	public Object reflashImg(HttpServletRequest request, String res) {
 		String root = request.getSession().getServletContext().getRealPath("/");
 		String path = root+"resources/member/captchar/"
@@ -224,7 +226,7 @@ public class MemberController {
 	
 	 */
 	@RequestMapping("captcharkey.do")
-	@ResponseBody
+	@ResponseBody//
 	public Object naverCaptchar(HttpServletRequest request,String res) {
 		
 		Map<String,String> datas = new HashMap<String, String>();
@@ -238,11 +240,7 @@ public class MemberController {
 
 		String key = jsonElement.getAsJsonObject().get("key").toString();
 		
-		System.out.println(key);
-		
 		String key2 = key.substring(1, key.lastIndexOf("\""));
-		
-		System.out.println(key2);
 		
 		getImg = naverCaptchar.getImages(key2,request);
 		
@@ -264,9 +262,8 @@ public class MemberController {
 	
 	 */
 	@RequestMapping("captcharkeyserti.do")
-	@ResponseBody
+	@ResponseBody//
 	public Object captcharkeySerti(HttpServletRequest request) {
-		System.out.println("serti");
 		NaverCaptchaNkey naverCaptchar = new NaverCaptchaNkey();
 		String key = request.getParameter("key");
 		String answer = request.getParameter("answer");
@@ -298,7 +295,7 @@ public class MemberController {
 		5.작성일 : 2020. 4. 29. 
 	
 	 */
-	@RequestMapping("kakaologin.do")
+	@RequestMapping("kakaologin.do")//
 	public ModelAndView kakaoLogin(@RequestParam("code") String code,ModelAndView mav,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String redirectURL = "http://localhost:7070/middle/member/kakaologin.do";
@@ -317,7 +314,6 @@ public class MemberController {
 		String authorCode = JsonauthorCode.substring(1,JsonauthorCode.lastIndexOf("\""));
 		String userInfo = kl.getUserCode(authorCode, 1);
 		
-		System.out.println(userInfo);
 		jsonElement = jsonParser.parse(userInfo);
 		
 //		id
@@ -334,10 +330,14 @@ public class MemberController {
 		
 		Member kakaoUser = certiIdKakao(m);
 		if(kakaoUser != null) {
+			if(kakaoUser.getLeave_yn().equals("Y")) {
+				memberService.updateKakaoLeaveYn(kakaoUser.getUser_id());
+				kakaoUser.setLeave_yn("N");
+			}
 			HttpSession session = request.getSession();
 			session.setAttribute("userData", kakaoUser);
 			session.setAttribute("accessToken", authorCode);
-			mav.setViewName("steller/index");
+			mav.setViewName("redirect:/steller/index.do");
 		}else {
 			if(memberService.selectNickname(nickname) != null) {
 				mav.addObject("nickNameFlag", "false");
@@ -382,13 +382,11 @@ public class MemberController {
 		 if(m_code.equals("1")) {
 			KakaoLogin kl = new KakaoLogin();
 			String accessToken = (String)session.getAttribute("accessToken");
-			System.out.println(accessToken);
 			String logoutId = kl.KakaoLogout(accessToken);
-			System.out.println("controller : "+logoutId); 
 			session.removeAttribute("accessToken");
-			
-		 }
 			 
+		 }
+			  
 		response.sendRedirect("/middle/steller/index.do");
 	}
 	
@@ -407,6 +405,20 @@ public class MemberController {
 		5.작성일 : 2020. 4. 29. 
 	
 	 */
+	@RequestMapping("withdraw.do")
+	public ModelAndView withdraw(ModelAndView mav, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(false);
+		Member m = (Member) session.getAttribute("userData");
+		String user_id = m.getUser_id();
+		
+		memberService.withdraw(user_id);
+		session.removeAttribute("userData");
+		mav.setViewName("redirect:/member/memberloginpage.do");
+		
+		return mav;
+	}
+	
 	@ExceptionHandler(value = Exception.class)
 	public ModelAndView handleException(Exception e) {
 		ModelAndView mav = new ModelAndView();
