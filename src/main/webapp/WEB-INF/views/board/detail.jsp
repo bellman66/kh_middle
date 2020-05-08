@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/steller/assets/css/main.css" />
 <link href="${pageContext.request.contextPath}/resources/css/board/detail.css"

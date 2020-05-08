@@ -46,8 +46,7 @@ public class BoardController extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(StellerController.class);
     @Resource(name = "NoticeService")
     NoticeService noticeService;
-   
-    
+     
     /**
      * 1.MethodName : Board_indexView
        2.ClassName : BoardController.java
