@@ -39,17 +39,22 @@ public class FileUtil {
 			mRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 			//upload.jsp file 파라미터 값
 			originFileName = mRequest.getFilesystemName("noticeFile");
+			//파일 업로드가 있을 경우에만
 			if(originFileName != null) {
+				
 				Date now = new Date();
 				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+				//random한 uuid값 + 오늘 날짜
 				String fileName = uuid + "_" + String.valueOf(format.format(now));
 				
+				//random uuid값 + 오늘 날짜  + .뒤에부분(확장자명)
 				renameFileName = fileName + originFileName.substring(originFileName.lastIndexOf("."));
 				
 				//경로 + fileName
 				File originFile = new File(savePath + "\\" + originFileName);
 				File renameFile = new File(savePath + "\\" + renameFileName);
 				
+				//먼저 원본파일명으로 업로드 후 rename시킨다
 				originFile.renameTo(renameFile);
 			}
 			
@@ -69,14 +74,17 @@ public class FileUtil {
 
 	}
 	
-	public boolean fileDownload(ModelAndView model, HttpServletResponse response, HttpServletRequest request) {
+	public boolean fileDownload(ModelAndView model, HttpServletResponse response, 
+			HttpServletRequest request) {
 		boolean res = false;
 		File downFile = new File((String)request.getAttribute("path"));
 		String ofname = (String)request.getAttribute("ofname");
 		ServletOutputStream downOutput;
 		
 		try {
+			//Header에 다운로드 해야할 파일임을 명시 + 인코딩설정
 			response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(ofname, "UTF-8"));
+			
 			downOutput = response.getOutputStream();
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(downFile));
 			int read = 0;

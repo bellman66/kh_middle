@@ -30,7 +30,7 @@
 									<textarea id="content" name="notice_content"></textarea><br> 
 									<input id="file" name="noticeFile" type="file" /><br><br>
 									<button id="reset" type="button">취소</button>
-									<button type="submit">등록</button>
+									<button id="submit" type="submit">등록</button>
 								</div>
 							</div>
 						</div>
@@ -44,14 +44,22 @@
 		crossorigin="anonymous"></script>
 		
 	<script>
+	
 		$('#reset').click(function() {
 			history.back();
 		})
 		
 		$('#content').on('keyup', function() {
 			if($(this).val().length > 700) {
-				alert("글자수는 700자로 이내로 제한됩니다.");
+				alert("글자수는 700자 이내로 제한됩니다.");
 				$(this).val($(this).val().substring(0, 700));
+			}
+		});
+		
+		$('#submit').click(function(){
+			if($('#title').val().trim() == ''){
+				alert('제목을 입력해주세요');
+				return false;
 			}
 		});
 	</script>

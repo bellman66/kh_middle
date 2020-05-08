@@ -12,19 +12,18 @@
 		.pagination { 
 	 	  display: inline-block;
 		  transform:translateX(29%);
-		}
+		} 
  		
 		.pagination a {
 		  color: black;
 		  float: left;
 		  padding: 8px 16px;
-		  text-decoration: none;
 		}
 		
-		.pagination a.active {
-		  background-color: #4CAF50;
-		  color: white;
+		.title{
+			width:40%;
 		}
+		
 		</style>
 	</head>
 	
@@ -120,8 +119,8 @@
 			</div>
 			<!-- ============================================= -->
 
+			</section>
+			</div>
 		</div>
-		</section>
-
 	</body>
 </html>

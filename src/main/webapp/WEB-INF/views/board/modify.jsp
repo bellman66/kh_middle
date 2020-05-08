@@ -76,8 +76,15 @@
 			
 			$('#content').on('keyup', function() {
 				if($(this).val().length > 700) {
-					alert("글자수는 700자로 이내로 제한됩니다.");
+					alert("글자수는 700자 이내로 제한됩니다.");
 					$(this).val($(this).val().substring(0, 700));
+				}
+			});
+			
+			$('#modify_complete').click(function(){
+				if($('#title').val().trim() == ''){
+					alert('제목을 입력해주세요');
+					return false;
 				}
 			});
 			
