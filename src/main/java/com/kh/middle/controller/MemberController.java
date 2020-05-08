@@ -378,9 +378,9 @@ public class MemberController {
 			String accessToken = (String)session.getAttribute("accessToken");
 			String logoutId = kl.KakaoLogout(accessToken);
 			session.removeAttribute("accessToken");
-			
-		 }
 			 
+		 }
+			  
 		response.sendRedirect("/middle/steller/index.do");
 	}
 	

@@ -11,7 +11,7 @@ $(function() {
 	$.ajax({
 
 		url : "/middle/member/captcharkey.do",
-		type : "get", 
+		type : "get",  
 		data : $("#captcharImgSrc").val(),
 		success : function(data) {
 			$("#key").val(data.key);

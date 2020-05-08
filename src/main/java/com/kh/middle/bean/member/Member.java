@@ -8,8 +8,8 @@ public class Member {
 	private String leave_yn;
 	private String grade;
 	private String m_code;
-	private String nick_name;
-;
+	private String nick_name; 
+
 	
 	public Member() {} 
 

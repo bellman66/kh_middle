@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class KakaoLogin {
-
+ 
 	private final String RESTKEY = "c618b7fc9b808f184bdafc0406409848";
 	private String redirectURL;
 	

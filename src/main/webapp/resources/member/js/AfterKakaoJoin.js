@@ -12,7 +12,7 @@ function validate(){
 	function nickNameCheck(){
 		
 		$.ajax({ 
-		
+		 
 			url:"/middle/member/nicknamecheck.do",
 			type:"get",
 			data:$("#nickName").serialize(),

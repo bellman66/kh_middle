@@ -30,7 +30,7 @@
 	
 	
 	<strong>최초 사용자는 추가 입력 사항이 필요합니다. 하단 입력사항을 기재해주세요 .</strong><br><br>
-	 
+	  
 	<input type="hidden" id="user_id" name ="userId" value="${userData.user_id }"/>
 	<c:if test="${nickNameFlag eq 'false'}">
 		<strong>닉네임</strong>

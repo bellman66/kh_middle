@@ -20,7 +20,7 @@ public class NaverCaptchaNkey {
 	private final String clientSecret = "gtoBjWL5IW";
 
 	public String returnKey(int flag,String key, String value, HttpServletRequest path) {
-
+ 
 		int code = flag;// 키 발급시 0, 캡차 이미지 비교시 1로 세팅
 		String apiURL = "";
 		switch(code) { 

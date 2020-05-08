@@ -34,7 +34,7 @@ public class MemberService implements MemberServiceInter{
 	}
 	@Override 
 	public void kakaoJoin(Member m) throws Exception {
-		memberDao.kakaoJoin(m);
+		memberDao.kakaoJoin(m); 
 	}
 	@Override
 	public String selectNickname(String nickname) {
