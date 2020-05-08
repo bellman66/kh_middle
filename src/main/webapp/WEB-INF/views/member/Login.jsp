@@ -22,7 +22,7 @@
 </head>
 <body>   
 <div class="memberLoginWrapper">
-	<h1 class="loginMsg" style="text-decoration:none"><a href="<%=request.getContextPath()%>/member/index.do" >나만의 주유소</a></h1>
+	<h1 class="loginMsg" style="text-decoration:none !important;"><a href="<%=request.getContextPath()%>/member/index.do" >나만의 주유소</a></h1>
 	<div class="loginImple">
 		<form action="<%=request.getContextPath() %>/member/memberlogin.do" method="post">
 				<strong style="font-size:120%;">ID</strong>

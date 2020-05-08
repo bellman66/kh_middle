@@ -1,14 +1,10 @@
 package com.kh.middle.bean.member;
 
-import java.sql.Date;
-
 public class Member {
 	
 	private String user_id;
 	private String user_pw;
 	private String kind_oil; // 소유 차량의 유종 입력
-	private String email;
-	private String user_tell;
 	private String leave_yn;
 	private String grade;
 	private String m_code;
@@ -17,15 +13,13 @@ public class Member {
 	
 	public Member() {}
 
-	public Member(String user_id, String user_pw, String kind_oil, String email,
-			String user_tell,String leave_yn,String grade, String m_code,String nick_name
+	public Member(String user_id, String user_pw, String kind_oil, 
+			String leave_yn,String grade, String m_code,String nick_name
 ) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.kind_oil = kind_oil;
-		this.email = email;
-		this.user_tell = user_tell;
 		this.leave_yn = leave_yn;
 		this.m_code = m_code;
 		this.grade = grade;
@@ -56,21 +50,6 @@ public class Member {
 		this.kind_oil = kind_oil;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getUser_tell() {
-		return user_tell;
-	}
-
-	public void setUser_tell(String user_tell) {
-		this.user_tell = user_tell;
-	}
 	
 	public String getLeave_yn() {
 		return leave_yn;
@@ -106,8 +85,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [user_id=" + user_id + ", user_pw=" + user_pw + ", kind_oil=" + kind_oil + ", email=" + email
-				+ ", user_tell=" + user_tell + ", leave_yn=" + leave_yn + ", grade=" + grade + ", m_code=" + m_code
+		return "Member [user_id=" + user_id + ", user_pw=" + user_pw + ", kind_oil=" + kind_oil + ", leave_yn=" + leave_yn + ", grade=" + grade + ", m_code=" + m_code
 				+ ", nick_name=" + nick_name + "]";
 	}
 

@@ -84,7 +84,6 @@ public class KakaoLogin {
 		} else {
 			responseBody = readBody(con.getErrorStream());
 		}
-		System.out.println("dao : "+responseBody);
 		return responseBody;
 	}
 	

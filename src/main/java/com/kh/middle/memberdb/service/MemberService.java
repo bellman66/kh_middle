@@ -40,5 +40,15 @@ public class MemberService implements MemberServiceInter{
 	public String selectNickname(String nickname) {
 		return memberDao.selectNickname(nickname);
 	}
+	@Override
+	public void withdraw(String user_id) {
+		memberDao.withdraw(user_id);
+		
+	}
+	@Override
+	public void updateKakaoLeaveYn(String user_id) {
+		memberDao.updateKakaoLeaveYn(user_id);
+		
+	}
 
 }

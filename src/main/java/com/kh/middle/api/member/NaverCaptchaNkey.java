@@ -39,8 +39,6 @@ public class NaverCaptchaNkey {
 
 		String responseBody = getKey(apiURL, setRequestHeader);
 
-		System.out.println("responseBody : "+responseBody);
-
 		return responseBody;
 	}
 
@@ -96,7 +94,6 @@ public class NaverCaptchaNkey {
 	}
 
 	public String getImages(String captcharKey, HttpServletRequest request) {
-		System.out.println("getImg : "+captcharKey);
 		String key = captcharKey; // https://openapi.naver.com/v1/captcha/nkey 호출로 받은 키값
 		String apiURL = "https://openapi.naver.com/v1/captcha/ncaptcha.bin?key=" + key;
 		// 헤더설정 시작 
@@ -107,7 +104,6 @@ public class NaverCaptchaNkey {
 		// 헤더설정 끝
 		// 
 		String responseBody = getImg(apiURL, requestHeaders,request);
-		System.out.println(responseBody);
 		return responseBody;
 	}
 
@@ -122,20 +118,15 @@ public class NaverCaptchaNkey {
 //			넘겨받은 Map객체를 각각 1:1로 매칭하고 그 값을 RequestProperty에 담아준다 
 			for (Map.Entry<String, String> header : requestHeaders.entrySet()) {
 				con.setRequestProperty(header.getKey(), header.getValue());
-				System.out.println("header key : "+header.getKey());
-				System.out.println("header value : "+header.getValue());
 			}
 //			통신 후 웹에서 보내는 통신코드를 받아준다 
 			int responseCode = con.getResponseCode();
-			System.out.println("responseCode : "+responseCode);
 			
 			if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
-				System.out.println(con.getInputStream());
 //				연결된 통로에서 보대누즌 Stream을 getImage메서드에 입력
 				bis = new BufferedInputStream(con.getInputStream());
 				return getImage(bis,request);
 			} else { // 에러 발생
-				System.out.println("에러발생");
 				return error(con.getErrorStream());
 			}
 		} catch (IOException e) {
@@ -152,17 +143,12 @@ public class NaverCaptchaNkey {
 		 FileOutputStream fos = null;
 	        // 랜덤한 이름으로  파일 생성
 	        String filename = Long.valueOf(new Date().getTime()).toString();
-	        System.out.println("fileName : "+filename);
 	        String root = request.getSession().getServletContext().getRealPath("/");
-	        System.out.println(root);
 	        String path = root+"resources/member/captchar/";
 	        // 새로운 파일 생성 
 	        try{
 	        	fos = new FileOutputStream(path+filename+".jpg");
 	        	
-	        	System.out.println("경로 : "+path+filename+".jpg");
-	        	
-	            
 	            while ((read = bis.read()) != -1) {
 	                fos.write(read);
 	            }

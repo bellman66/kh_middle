@@ -10,5 +10,7 @@ public interface MemberDaoInter {
 	public void kakaoJoin(Member m)  throws Exception;
 	public Member joinImple(Member m)  throws Exception;
 	String selectNickname(String nickname) throws Exception;
+	void withdraw(String user_id) throws Exception;
+	void updateKakaoLeaveYn(String user_id) throws Exception;
 	 
 }
