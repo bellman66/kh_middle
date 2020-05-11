@@ -1,4 +1,4 @@
-(function () {
+$(function () {
 	// 중요
 	
 	// session 값 업데이트 
@@ -42,9 +42,6 @@
         imageSize = new kakao.maps.Size(48, 48) // 마커이미지의 크기입니다
         imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다.
 																// 마커의 좌표와 일치시킬
-																// 이미지 안에서의 좌표를
-																// 설정합니다.
-
         BlueMarker = new kakao.maps.MarkerImage('/middle/resources/image/icon_MarkerBlue.png', imageSize, imageOption)
         RedMarker = new kakao.maps.MarkerImage('/middle/resources/image/icon_MarkerRed.png', imageSize, imageOption)
         GreenMarker = new kakao.maps.MarkerImage('/middle/resources/image/icon_MarkerGreen.png', imageSize, imageOption)
@@ -61,8 +58,9 @@
             // 현재 위치로 화면 전환 이후에 주변 주유소 서칭
             goToCenter2(position.coords.latitude, position.coords.longitude).then(function (value) {
                 if(value == "success"){
-                	var efficiency = $('#fs').val();
-                	sessionStorage.setItem('efficiency' , efficiency);
+//                	var efficiency = $('#fs').val();
+//                	sessionStorage.setItem('efficiency' , efficiency);
+
                     aroundAll();
                 }
             });
@@ -148,8 +146,6 @@
     // == == == 좌표계 변환 end
 
     function goToCenter(x, y) {
-        // 이동할 위도 경도 위치를 생성합니다
-        alert("움직일 위도 x : " + x + "움직일 경도 Y : " + y);
         var moveLatLon = new kakao.maps.LatLng(x, y);
 
         // 지도 중심을 부드럽게 이동시킵니다
@@ -161,7 +157,6 @@
         return new Promise(function (resolve , reject) {
             try {
                 // 이동할 위도 경도 위치를 생성합니다
-                alert("움직일 위도 x : " + x + "움직일 경도 Y : " + y);
                 var moveLatLon = new kakao.maps.LatLng(x, y);
 
                 // 지도 중심을 부드럽게 이동시킵니다
@@ -179,8 +174,8 @@
 
     function makeOverListener(map, overlay, marker) {
         return function () {
-        	var position = marker.getPosition();
-        	map.panTo(position);
+        	var set_position = marker.getPosition();
+        	map.panTo(set_position);
             overlay.setMap(map);
         };
     }
@@ -261,7 +256,7 @@
         var overlay = new kakao.maps.CustomOverlay({
             // 1. 인포 윈도우 설정.
             position: data.latlng,
-            yAnchor: 0.55,
+            yAnchor: 1.4,
             clickable: true,
             zIndex : 1
         });
@@ -421,10 +416,27 @@
                     textarea.id = "textarea";
                     textarea.style.top = '20px';
                     textarea.style.backgroundColor = 'white';
+                    textarea.placeholder = "300 자 이내로 작성해주세요 ";
                     textarea.cols = '100px';
                     textarea.rows = '100px';
                     textarea.style.resize = "none"; // 사이즈 고정
+
+                    var counter = document.createElement('span');
+                    counter.id = "counter";
+                    counter.style.color = "lightblue";
+                    textarea.addEventListener('keyup' , function (e) {
+                        var content = textarea.value;
+                        if(content.length > 300) {
+                            alert("최대 300자 까지 입력가능");
+                            textarea.value = content.substring(0,300);
+                            counter.innerHTML = "( 300 / 300 )";
+                        }
+                        else {
+                            counter.innerHTML = "( " + content.length + " / 300 )";
+                        }
+                    })
                     textdiv.appendChild(textarea);
+                    textdiv.appendChild(counter);
 
                     var button = document.createElement('div');
                     button.textContent = "리뷰 등록";
@@ -446,7 +458,6 @@
                             } ,
                 	        success: function (data, status) {
                                 alert('리뷰 등록 완료');
-                                alert(data);
                                 close_review(span5,view);
                                 
                                 // pointer
@@ -487,22 +498,25 @@
     // String user_id; //회원 아이디
     // int rating; // 평점을 위한 필드추가
     // String content; //리뷰 내용
-        console.log(review);
     	var ul = document.createElement('ul');
     	ul.id = "review";
 
     	for(var i = 0 ; i < review.length ; i++) {
             var li = document.createElement('li');
 
-            var span = document.createElement('span');
-            span.className = 'number';
-            span.innerHTML = review[i].user_id;
-            li.appendChild(span);
+            var user_id = document.createElement('span');
+            user_id.className = 'number';
+            user_id.innerHTML = review[i].user_id;
+            li.appendChild(user_id);
 
-            var span = document.createElement('span');
-            span.className = 'title';
-            span.innerHTML = review[i].content;
-            li.appendChild(span);
+            var content = document.createElement('span');
+            content.className = 'title';
+            content.innerHTML = review[i].content;
+
+            li.appendChild(content);
+            li.addEventListener('click' , function (e) {
+                // pointer current
+            });
 
             var star = document.createElement("div");
             star.id = "star";
@@ -569,9 +583,11 @@
     function aroundAll() {
         var sc = WGS84_To_KTM_XY(map.getCenter().getLng(), map.getCenter().getLat());
         var product = $('#product').val();
-        var center = {"product" : product , "x": sc[0], "y": sc[1]};
-        // center 값 확인완료.
-        console.log(center);
+        var center = {
+        		"product" : product ,
+        		"x": sc[0], 
+        		"y": sc[1]
+        };
 
         var Position = [];
         var Review_Info = [];
@@ -589,7 +605,6 @@
                 // 데이터가 반환.
                 if(data.length > 0) {
                     var json = JSON.parse(data);
-                    console.log(json);
                     for (var i = 0; i < json.length; i++) {
                         var trans = KTM_To_WGS84_XY(json[i].GIS_X_COOR, json[i].GIS_Y_COOR);
                         var obj = {
@@ -614,7 +629,7 @@
         set_marker(Position);
     }
 
-    function Marker_Priority(Position) {
+    function Marker_Priority(Position , efficiency) {
         // Postion 요소
         // UNI_ID 주유소코드
         // POLL_DIV_CD
@@ -626,13 +641,16 @@
         // GIS_X_COOR GIS X좌표(KATEC) GIS_Y_COOR GIS Y좌표(KATEC)
         // 사용법 -> Position.content.PRICE
         var After_Position = Position;
+        var efficiency = "10";
+        if( $('#fs').val() != ""){
+        	efficiency = $('#fs').val();
+        }
 
         // ex ) 소나타연비 주입
-        var testoil = 11;               // 1L = 1204원 = 11km (testoil) = 11000m
+        var testoil = parseInt(efficiency);               // 1L = 1204원 = 11km (testoil) = 11000m
         var meter_price;                // 10m 당 기름 소비량
         								// content.PRICE / testoil * 0.01 -> 10m
 										// 당 가격.
-
         // 가격으로 오름 차순 정렬
         After_Position.sort (function (a , b) {
         	// 미터당 기름값 사용 해당 거리 가득 넣었을때 가격
