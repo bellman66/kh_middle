@@ -27,8 +27,6 @@ public class aroundAll {
 	
 	public static void main(String[] args) throws Exception {
 		aroundAll al = new aroundAll();
-		al.getaroundAll(315179.00000 , 544445.00000);
-		System.out.println("내프로젝트의 루트경로는?  " + System.getProperty("user.dir"));
 	}
 	
 	// url입력시 세팅 메소드.
@@ -40,9 +38,9 @@ public class aroundAll {
 	// ======================================================================
 	// 1. 평균가격 주유소.
 	
-	public ArrayList<aroundAll_obj> getaroundAll(double x , double y) throws Exception {	
+	public ArrayList<aroundAll_obj> getaroundAll(String prodcd ,double x , double y) throws Exception {	
 
-        URL url = new URL(seturl.aroundAll("Json" , x , y ));	// Json으로 뽑아냄.
+        URL url = new URL(seturl.aroundAll("Json", prodcd , x , y ));	// Json으로 뽑아냄.
  
         SettingParser(url);	// url로 세팅.
         

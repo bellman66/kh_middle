@@ -3,39 +3,37 @@ package com.kh.middle.customerdb.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.middle.bean.customer.Comment;
 import com.kh.middle.bean.customer.Criteria;
 import com.kh.middle.bean.customer.Customer;
 import com.kh.middle.bean.customer.SearchCriteria;
 
 public interface CustomerService {
-	// 게시물 목록 조회
-	public List<Customer> select_writingList() throws Exception;
 
-	// 게시물 글 쓰기
-	public void insert_writerBoard(Customer cus) throws Exception;
+	public List<Customer> pageList(Criteria cri) throws Exception;
 
-	// 게시물 상세내용 불러오기
+	public int countBoardList() throws Exception;
+
+	public List<Customer> searchList(Criteria cri) throws Exception;
+
+	public int countArticle(Criteria cri) throws Exception;
+
+	public void boardWriter(Customer cus) throws Exception;
+
 	public Customer boardRead(int s_no) throws Exception;
-	
-	// 게시물 수정 실행
-	public int updateBoard(Customer cus) throws Exception;
-	
-	 // 게시물 삭제
-    public void deleteBoard(int s_no) throws Exception;
-    
-    // 게시물 페이징처리
-    List<Map<String, Object>> pageList(Criteria cri);
-	
-    // 총 게시물 수
-    public int countBoardList();
-    
-    // 검색한 게시물 수
-    public List<Customer> searchList(SearchCriteria cri);
-    
-	public int countArticle(String searchType, String keyword);
-    
-    
-    
-    
+
+	public int updateCount(int s_no) throws Exception;
+
+	public int boardUpdate(Customer cus) throws Exception;
+
+	public void boardDelete(int s_no) throws Exception;
+
+	public void insert_comment(Comment comment) throws Exception;
+
+	public List<Comment> select_comment(int s_no) throws Exception;
+
+	public void delete_comment(int comment_num) throws Exception;
+
+	public void update_comment_modify(Comment comment) throws Exception;
 
 }

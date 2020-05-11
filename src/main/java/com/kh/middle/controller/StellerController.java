@@ -74,12 +74,12 @@ public class StellerController {
 		Gson gson = new Gson();
 		String jsonstring = "";
 
-		String product = (String) paramData.get("product");
+		String prodcd = (String) paramData.get("product");
 		double x = Double.parseDouble(String.valueOf(paramData.get("x")));
 		double y =  Double.parseDouble(String.valueOf(paramData.get("y")));
 
-		jsonstring = gson.toJson(api_control.aroundAll(x, y));
-
+		jsonstring = gson.toJson(api_control.aroundAll(prodcd , x, y));
+ 
 		return jsonstring;
 	}
 

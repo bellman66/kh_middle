@@ -1,0 +1,27 @@
+@charset "UTF-8";
+ 
+	form {
+		height: 100%;
+		width: 100%;
+	}
+	  
+	.wrapper {
+		border: 1px solid gray;
+		width: 70%;
+		height: auto;
+ 		margin: auto;
+		top: 50%;
+		left: 50%;
+	}
+	
+	#write {
+		height: auto;
+		width: 80%;
+		margin: auto;
+		top: 50%;
+		left: 50%;
+	}
+	
+	table{
+		margin-bottom:10%;
+	}

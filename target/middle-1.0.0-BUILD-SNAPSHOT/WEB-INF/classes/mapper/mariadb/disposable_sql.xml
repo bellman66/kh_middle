@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "sql">
+	<!-- sql 작성 하는곳  -->
+	
+	<!-- select -->
+	<select id = "login_member" resultType="com.kh.middle.bean.member.Member">
+	
+		select * from member_semi where user_id = #{user_id} and user_pw = #{user_pw} and leave_yn = 'N'
+	
+	</select>
+	
+	<select id="join_id_check" resultType="java.lang.String">
+		
+		select * from member_semi where user_id = #{user_id}
+	
+	</select>
+	
+	<select id="nick_name_select" parameterType="java.lang.String" resultType="java.lang.String">
+	
+		select nick_name from member_semi where nick_name = #{nick_name}
+	
+	</select>
+	
+	<update id="member_withdraw" parameterType="java.lang.String">
+	
+		update member_semi set leave_yn = 'Y' where user_id = #{user_id}
+	
+	</update>
+
+	
+
+<!--int review_no;	//게시글 번호
+	String uni_id;  //주유소 아이디
+	String user_id; //회원 아이디
+	int rating; // 평점을 위한 필드추가
+	String content;	//리뷰 내용 -->
+	<!-- 리뷰 추가 및 리뷰 모아두는 프로시저 부르기  -->
+	<update id="insert_review" parameterType="com.kh.middle.review.vo.Review" statementType="CALLABLE">
+        {	
+        	call REVIEW_PROCEDURE(
+        							#{uni_id},
+        							#{user_id},
+        							${rating},
+        							#{content}
+        						 )
+    	}
+	</update>
+	
+	<!-- 저장된 리뷰들 불러오기 -->
+	<select id = "select_review" 
+	parameterType="String"
+	resultType="com.kh.middle.review.vo.Review">
+		SELECT * FROM review_semi WHERE uni_id = #{uni_id} ORDER BY review_no DESC limit 3;
+	</select>
+	
+	<!-- 주유소 평균점수 불러오기 -->
+	<select id = "review_avg"
+	parameterType="String"
+	resultType="float">
+		SELECT ROUND( IFNULL(total_avg,0), 1) FROM review_stack_semi WHERE uni_id = #{uni_id} ;
+	</select>
+	
+	<select id="kakao_id_check" resultType="com.kh.middle.bean.member.Member">
+	
+		select * from member_semi where user_id = #{user_id}
+		
+	</select>
+	
+	
+	<select id="login" resultType="com.kh.middle.bean.member.Member">
+	
+		select user_id, nick_name,m_code,kind_oil, leave_yn from member_semi where user_id = #{user_id}
+	
+	</select>
+	
+	<update id="update_kakao_leave_yn" parameterType="java.lang.String">
+	
+		update member_semi set leave_yn = 'N' where user_id = #{user_id}
+	
+	</update>
+	
+	<!-- insert -->
+	
+	<insert id="kakao_join" parameterType="com.kh.middle.bean.member.Member" useGeneratedKeys="true" keyProperty="user_id">
+	
+		insert into member_semi(user_id,kind_oil,nick_name,m_code)
+		values(#{user_id},#{kind_oil},#{nick_name},1)	
+	</insert>
+	
+	<insert id="join_imple" useGeneratedKeys="true" keyProperty="user_id">
+
+		insert into member_semi(user_id,user_pw,kind_oil,nick_name)
+		values(#{user_id},#{user_pw},#{kind_oil},#{nick_name})	
+	
+	</insert>
+	
+	<select id="select_notice_list" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi
+	</select>
+	
+	<insert id="insert_notice" parameterType="com.kh.middle.notice.vo.Notice">
+		insert into notice_semi values(null, #{notice_title}, #{notice_id} , sysdate(), 0, 0, #{notice_content}
+		, #{original_filepath}, #{rename_filepath})
+	</insert>
+	
+	<select id="select_notice_detail" resultType="com.kh.middle.notice.vo.Notice">
+		select * from notice_semi where notice_num = #{notice_num}
+	</select>
+	
+	<update id="update_notice_count" parameterType="int">
+		update notice_semi set notice_count = notice_count + 1 where notice_num = #{notice_num}
+	</update>
+	
+	<select id="select_notice_paging" parameterType="com.kh.middle.notice.vo.PageDefault" resultType="com.kh.middle.notice.vo.Notice">
+		<![CDATA[
+			select notice_num, notice_title, notice_id, notice_date, notice_count, notice_recommend 
+			from notice_semi
+			order by notice_num desc
+			limit #{pageStart} , #{amount}
+		]]> 
+	</select>
+	
+	<select id="select_board_total_count" resultType="int">
+		select count(*) from notice_semi
+	</select>
+	
+	<update id="update_modify_notice" parameterType="com.kh.middle.notice.vo.Notice">
+		update notice_semi set notice_title = #{notice_title}, notice_content = #{notice_content},
+		original_filepath = #{original_filepath}, rename_filepath = #{rename_filepath}
+		where notice_num = #{notice_num}
+	</update>
+	
+	<update id="update_recommend" parameterType="com.kh.middle.notice.vo.Notice">
+		update notice_semi set notice_count = #{notice_count} + 1
+		where notice_num = #{notice_num}
+	</update>
+	
+	<insert id="insert_notice_comment" parameterType="com.kh.middle.notice.vo.Comment">
+		insert into notice_comment_semi values(#{notice_num},#{comment_content}, null, #{comment_id})
+	</insert>
+	
+	<select id="select_notice_comment" parameterType="int" resultType="com.kh.middle.notice.vo.Comment">
+		select * from notice_comment_semi where notice_num = #{notice_num}
+	</select>
+	
+	<!-- 글+댓삭 -->
+	<delete id="delete_notice" parameterType="int">
+		delete from notice_semi
+		where notice_num = #{notice_num}
+	</delete>
+	
+	<!-- 댓삭 -->
+	<delete id="delete_notice_comment" parameterType="int">
+		delete from notice_comment_semi where comment_num = #{comment_num}
+	</delete>
+	
+	<update id="update_notice_recommend" parameterType="int">
+		update notice_semi set notice_recommend = notice_recommend + 1 
+		where notice_num = #{notice_num}
+	</update>
+
+	<!-- 댓 수정 -->	
+	<update id="update_notice_comment_modify" parameterType="com.kh.middle.notice.vo.Comment">
+		update notice_comment_semi
+		set comment_content = #{comment_content}
+		where comment_num = #{comment_num}
+	</update>
+
+	<!-- 미사용 -->	
+	<select id="select_notice_comment_cnt" parameterType="int" resultType="int">
+		select count(*) from notice_comment_semi as aa
+		inner join notice_semi as bb
+		on aa.notice_num = bb.notice_num
+	</select>
+	
+</mapper>

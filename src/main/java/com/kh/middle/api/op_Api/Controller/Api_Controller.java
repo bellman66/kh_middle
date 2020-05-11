@@ -27,11 +27,6 @@ public class Api_Controller {
 		
 		Api_Controller ac = Api_Controller.getInstance();
 		
-		ArrayList<aroundAll_obj> list = ac.aroundAll(31 , 61);
-		
-		for (aroundAll_obj avgAllPrice_obj : list) {
-			System.out.println(avgAllPrice_obj);
-		}
 	}
 	
 	public ArrayList<avgAllPrice_obj> avgAllPrice() throws Exception {
@@ -54,8 +49,8 @@ public class Api_Controller {
 		return new avgSigunPrice().getavgSigunPrice("01");
 	}
 	
-	public ArrayList<aroundAll_obj> aroundAll(double x , double y) throws Exception {
-		return new aroundAll().getaroundAll(x , y);
+	public ArrayList<aroundAll_obj> aroundAll(String prodcd , double x , double y) throws Exception {
+		return new aroundAll().getaroundAll(prodcd , x , y);
 	}
 
 }

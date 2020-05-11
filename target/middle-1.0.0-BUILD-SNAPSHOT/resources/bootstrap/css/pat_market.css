@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* 오버라이딩 방법 */
+/* body 부분에 id = "bootstrap-overrides" 처럼 우선순위를 붙임
+   해당 모양 처럼 우선순위를 높여버림 */
+ 
+/* or 이름 붙이지 말고 그냥 쓰는 방법도 있지만 확실치는 않음 */
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  background-color: red;
+}
+.table > tbody > tr > th {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  background-color: red;
+}
+
+#bootstrap-overrides .table > tbody > tr > td {
+  vertical-align: middle;
+  border-bottom: 2px solid #ddd;
+  background-color: red;
+}
+
+.table > tbody > tr > td {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  background-color: white;
+}
+

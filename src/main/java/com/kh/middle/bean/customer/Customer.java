@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class Customer {
 
-	private int s_no;            //게시글 번호
-	private String s_title;      //게시글 제목
-	private String s_content;    //게시글 내용
-	private String s_writer;	 //게시글 작성자
-	private Date s_regDate;		 //게시글 등록시간
-	private int s_viewCnt;		 //게시글 조회수
-
+	private int s_no;            
+	private String s_title;      
+	private String s_content;    
+	private String s_writer;	 
+	private Date s_regDate;		 
+	private int s_viewCnt;
+	
 	public Customer() {
 		super();
 	}
@@ -77,8 +77,8 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customerservice [s_no=" + s_no + ", s_title=" + s_title + ", s_content=" + s_content + ", s_writer="
-				+ s_writer + ", s_regDate=" + s_regDate + ", s_viewCnt=" + s_viewCnt + "]";
+		return "Customer [s_no=" + s_no + ", s_title=" + s_title + ", s_content=" + s_content + ", s_writer=" + s_writer
+				+ ", s_regDate=" + s_regDate + ", s_viewCnt=" + s_viewCnt + "]";
 	}
 
 }

@@ -42,7 +42,7 @@ public class SetUrl {
 		return url;
 	}
 	
-	public String aroundAll(String out, double d , double e) {
+	public String aroundAll(String out, String prodcd , double d , double e) {
 		// TODO Auto-generated method stub
 		String url = INIT_URL + "aroundAll.do?"
 							  + "&code=" + KEY 
@@ -50,7 +50,7 @@ public class SetUrl {
 							  + "&y=" + e
 							  + "&radius=" + 2000
 							  + "&sort=" + 1
-							  + "&prodcd=" + "B027"
+							  + "&prodcd=" + prodcd
 							  + "&out=" + out;
 		System.out.println(url);
 
